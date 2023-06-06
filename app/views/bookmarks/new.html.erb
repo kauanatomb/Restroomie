@@ -1,0 +1,7 @@
+<div>
+    <h3> <%= @restroom.name %> list</h3>
+        <%= simple_form_for [@restroom, @bookmark] do |f| %>
+          <%= f.association :movie, prompt: "Select a movie", input_html: {data: { controller: "tom-select"}} %>
+          <%= f.submit class: "btn btn-flat" %>
+        <% end %>
+</div>
