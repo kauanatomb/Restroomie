@@ -1,0 +1,5 @@
+<ul>
+<%@restrooms.each do |restroom|  %>
+    <li><%= link_to restroom.name, restroom_path(restroom) %></li>
+<%end %>
+</ul>
