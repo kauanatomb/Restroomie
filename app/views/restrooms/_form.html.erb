@@ -1,0 +1,47 @@
+<%= form_for @model do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div>
+      <%= form.label :address %>
+      <%= form.text_field :address %>
+    </div>
+
+    <div>
+      <%= form.label :pricing %>
+      <%= form.text_field :pricing %>
+    </div>
+
+    <div>
+      <%= form.label :accessibility, "Boolean Field" %>
+      <%= form.check_box :accessibility %>
+    </div>
+
+    <div>
+      <%= form.label :hygiene_products, "Boolean Field" %>
+      <%= form.check_box :hygiene_products %>
+    </div>
+
+    <div>
+      <%= form.label :baby_friendly, "Boolean Field" %>
+      <%= form.check_box :baby_friendly %>
+    </div>
+
+    <div>
+      <%= form.label :cleanliness, "Boolean Field" %>
+      <%= form.check_box :cleanliness %>
+    </div>
+
+    <div>
+      <%= form.label :photo %>
+      <%= form.file_field :photo %>
+    </div>
+
+    <div>
+      <%= form.submit 'Save' %>
+      <%= link_to 'Cancel', restrooms_path %>
+    </div>
+
+<% end %>

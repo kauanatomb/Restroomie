@@ -1,0 +1,2 @@
+<%= @restroom.name %>
+<%= button_to "Destroy this restroom", @restroom, method: :delete if policy(@restroom).destroy? %>
