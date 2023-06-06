@@ -29,6 +29,18 @@ class RestroomsController < ApplicationController
         # notice/alert that the restroom was deleted
     end
 
+    def bookmark
+        @restroom = Restroom.find(params[:restroom_id])
+        authorize @restroom
+        @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
+        if @bookmark
+            @bookmark.destroy
+        else
+            Bookmark.create(restroom: @restroom, user: current_user)
+        end
+        render :show
+    end
+
     private
 
     def set_restroom

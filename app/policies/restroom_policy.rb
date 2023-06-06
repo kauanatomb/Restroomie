@@ -17,6 +17,10 @@ class RestroomPolicy < ApplicationPolicy
       true
     end
 
+    def bookmark?
+      true
+    end
+
     def destroy?
       user.admin?
     end
