@@ -8,6 +8,9 @@ class RestroomsController < ApplicationController
 
     def show
         authorize @restroom
+        @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
+        # @review = Review.new(user: current_user, restroom: @restroom)
+        @review = Review.new
     end
 
     def new
@@ -38,7 +41,7 @@ class RestroomsController < ApplicationController
         else
             Bookmark.create(restroom: @restroom, user: current_user)
         end
-        render :show
+        redirect_to restroom_path(@restroom)
     end
 
     private
