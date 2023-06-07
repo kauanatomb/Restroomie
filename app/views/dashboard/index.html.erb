@@ -1,0 +1,46 @@
+<h1>Welcome to Your Dashboard, <%= current_user.username %>!</h1>
+
+  <h2>Your reviews:</h2>
+    <ul>
+      <% if @reviews.empty? %>
+        <p>No reviews created.</p>
+      <% else %>
+        <% @reviews.each do |bookmark| %>
+          <% tool = Review.find_by(id: review.restroom_id) %>
+          <h5 class="card-title"><%= Review.name %></h5>
+
+              <%# Insert code %>
+
+        <% end %>
+      <% end %>
+    </ul>
+
+  <h2>Your bookmarks:</h2>
+    <ul>
+      <% if @bookmarks.empty? %>
+        <p>No bookmarks created.</p>
+      <% else %>
+        <% @bookmarks.each do |bookmark| %>
+          <% tool = Restroom.find_by(id: bookmark.restroom_id) %>
+          <h5 class="card-title"><%= Restroom.name %></h5>
+
+              <%# Insert code %>
+
+        <% end %>
+      <% end %>
+    </ul>
+
+  <h2>Your restrooms:</h2>
+    <ul>
+      <% if @restrooms.empty? %>
+        <p>No restrooms created.</p>
+      <% else %>
+        <% @restrooms.each do |bookmark| %>
+          <% tool = Restroom.find_by(id: restroom_id) %>
+          <h5 class="card-title"><%= Restroom.name %></h5>
+
+              <%# Insert code %>
+
+        <% end %>
+      <% end %>
+    </ul>
