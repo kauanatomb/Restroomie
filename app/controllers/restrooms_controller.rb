@@ -3,6 +3,7 @@ class RestroomsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+
     @restrooms = policy_scope(Restroom)
     @markers = @restrooms.geocoded.map do |restroom|
     {
@@ -34,6 +35,7 @@ class RestroomsController < ApplicationController
     @restroom.user = current_user
     authorize @restroom
   end
+
 
     def bookmark
         @restroom = Restroom.find(params[:restroom_id])
@@ -78,3 +80,4 @@ class RestroomsController < ApplicationController
     params.require(:restroom).permit(:name, :address, :accessibility, :hygiene_products, :baby_friendly, :pricing, :cleanliness, :photo)
   end
 end
+
