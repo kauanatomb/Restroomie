@@ -21,7 +21,7 @@
         <p>No bookmarks created.</p>
       <% else %>
         <% @bookmarks.each do |bookmark| %>
-          <% tool = Restroom.find_by(id: bookmark.restroom_id) %>
+          <% tool = Restroom.find_by(id: bookmark.restroom) %>
           <h5 class="card-title"><%= Restroom.name %></h5>
 
               <%# Insert code %>
