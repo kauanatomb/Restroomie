@@ -1,2 +1,10 @@
+<% if current_user %>
+  <% if current_user.bookmarks.include?(@restroom) %>
+    <%= link_to "Remove from favorites", restroom_bookmark_path(@restroom), method: :delete, class: "btn btn-primary" %>
+  <% else %>
+    <%= link_to "Add to favorites", restroom_bookmark_path(@restroom), method: :post, class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+
 <%= @restroom.name %>
 <%= button_to "Destroy this restroom", @restroom, method: :delete if policy(@restroom).destroy? %>
