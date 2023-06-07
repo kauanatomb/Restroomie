@@ -8,6 +8,7 @@ export default class extends Controller {
     apiKey: String,
     markers: Array,
     journeyShow: String
+
   }
 
   connect() {
@@ -17,6 +18,7 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/ptrckbrd/clikbwk2300ez01pg0mrwapiu"
     })
+
 
 
     if (this.map) {
@@ -86,6 +88,7 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
+
 
   async #getRoute() {
     const vnues = [];
@@ -214,3 +217,4 @@ export default class extends Controller {
 //   );
 
 // Option for driving route as well - just weighted differently???
+
