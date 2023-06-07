@@ -4,10 +4,12 @@ class RestroomsController < ApplicationController
 
   def index
       @restrooms = policy_scope(Restroom)
-      @markers = @flats.geocoded.map do |flat|
+      @markers = @restrooms.geocoded.map do |restroom|
         {
-          lat: flat.latitude,
-          lng: flat.longitude
+          lat: restroom.latitude,
+          lng: restroom.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: {restroom: restroom}),
+          marker_html: render_to_string(partial: "marker")
         }
       end
   end
