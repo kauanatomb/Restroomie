@@ -2,22 +2,38 @@
   <div class="restroom-card">
     <div class="image-card">
       <% @restroom.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag photo.key %>
       <% end %>
     </div>
 
     <div class="card-body">
-      <h2 class="card-title"><%= @restroom.name%></h2>
-      <% if current_user %>
-        <div class="bookmark-section">
+      <h2 class="card-title show-flexbox"><%= @restroom.name%>
+        <% if current_user %>
+
+        <%# <div class="bookmark-section"> %>
+
           <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
           <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
             <i class="<%= bookmark_button_class %> fa-bookmark"></i>
           <% end %>
-        </div>
-      <% end %>
-      <p class="card-text">Location: <%= @restroom.address %></p>
-      <p class="card-text">Price: <%= @restroom.pricing %></p>
+      </h2>
+        <% end %>
+
+      <br>
+
+        <%# </div> %>
+      <div class="show-flexbox">
+        <p class="card-text">
+        <i class="fas fa-euro"></i> <%= @restroom.pricing %></p>
+          <% if @restroom.accessibility %>
+            <p class="card-text"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
+          <% end %>
+          <% if @restroom.baby_friendly %>
+            <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
+          <% end %>
+      </div>
+      <br>
+      <p class="card-text">Address: <%= @restroom.address %></p>
     </div>
 
     <hr>

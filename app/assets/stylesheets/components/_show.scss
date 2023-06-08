@@ -6,14 +6,18 @@
   padding: 10px;
 }
 
-.image-card{
-
-}
-
 .image-card > img {
   height: 250px;
   width: 100%;
   // margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+.card-text {
+  line-height: 1.5;
 }
 
 hr {
@@ -21,8 +25,12 @@ hr {
   margin: auto;
 }
 
-.container {
-  font-family: "Work Sans", sans-serif;
+.show-flexbox {
+  margin-top: 10px;
+  display: flex;
+  // justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 .no-hover:hover {
