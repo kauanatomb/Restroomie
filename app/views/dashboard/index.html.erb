@@ -6,15 +6,9 @@
       <% if @bookmarks.empty? %>
         <p>No bookmarks created.</p>
       <% else %>
-        <%= link_to bookmark.name, restroom_path(bookmark) %>
           <% @bookmarks.each do |bookmark| %>
             <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
-
-
-              <%# <h5 class="card-title"><%= bookmark.name %></h5> %>
-
-                <%# Insert code %>
-
+            <%= link_to bookmark.name, restroom_path(bookmark) %>
           <% end %>
       <% end %>
     </ul>
@@ -26,30 +20,25 @@
         <p>No restrooms created.</p>
       <% else %>
         <% @restrooms.each do |restroom| %>
-          <% restroom = Restroom.find_by(id: current_user) %>
-          <%= link_to restroom.name, restroom_path(restroom.id) %>
-          <%# <h5 class="card-title"><%= restroom.name %></h5> %>
-
-              <%# Insert code %>
-
+          <% restroom = Restroom.find_by(user_id: @user.id) %>
+          <%= link_to restroom.name, restroom_path(restroom) %>
         <% end %>
       <% end %>
     </ul>
 
 <div>
   <h2>Your reviews:</h2>
-    <ul>
-      <% if @reviews.empty? %>
-        <p>No reviews created.</p>
-      <% else %>
-        <% @reviews.each do |review| %>
-          <%= link_to review, restroom_path(review) %>
-            <% review = Review.find_by(id: review.user) %>
-              <h5 class="card-title"><%= review.comment %> <%= review.rating %></h5>
-
-              <%# Insert code %>
-
-        <% end %>
+  <ul>
+    <% if @reviews.empty? %>
+      <p>No reviews created.</p>
+    <% else %>
+      <% @reviews.each do |review| %>
+        <% restroom = Restroom.find_by(id: review.restroom_id) %>
+        <li>
+          <%= link_to "#{review.comment} - #{restroom.name}", restroom_path(restroom) %>
+        </li>
       <% end %>
-    </ul>
+    <% end %>
+  </ul>
 </div>
+
