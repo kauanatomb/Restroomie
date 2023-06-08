@@ -1,2 +1,6 @@
-<h2><%= restroom.name %></h2>
-<p><%= restroom.address %></p>
+<div data-controller="map"
+     data-action="click->map#getRoute"
+     data-map-address-value="<%= restroom.address %>">
+  <h2><%= restroom.name %></h2>
+  <p><%= restroom.address %></p>
+</div>
