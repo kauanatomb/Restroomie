@@ -18,15 +18,17 @@
             <%# IMG YAYA %>
             <div class="card-body">
               <h2 class="card-title"><%= restroom.name %></h2>
-              <% average_rating = restroom.reviews.pluck(:rating).sum/restroom.reviews.count.to_f %>
-            <% if average_rating %>
-              <p class="card-text">
-                <% average_rating.round.times do %>
-                  <i class="fa-solid fa-star"></i>
-                <% end %>
-              </p>
-            <% else %>
-              <p class="card-text">No reviews available.</p>
+              <% if restroom.reviews.present? %>
+                <% average_rating = restroom.reviews.pluck(:rating).sum/restroom.reviews.count.to_f %>
+              <% if average_rating %>
+                <p class="card-text">
+                  <% average_rating.round.times do %>
+                    <i class="fa-solid fa-star"></i>
+                  <% end %>
+                </p>
+              <% else %>
+                <p class="card-text">No reviews available.</p>
+              <% end %>
             <% end %>
 
               <p class="card-text"><i class="fas fa-euro"></i> <%= restroom.pricing %></p>
