@@ -3,27 +3,25 @@ class RestroomsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-
-      @restrooms = policy_scope(Restroom)
-      @markers = @restrooms.geocoded.map do |restroom|
-        {
-          lat: restroom.latitude,
-          lng: restroom.longitude,
-          info_window_html: render_to_string(partial: "info_window", locals: {restroom: restroom}),
-          marker_html: render_to_string(partial: "marker", locals: { restroomLngLat: [restroom.longitude, restroom.latitude] }),
-          imageUrl: helpers.asset_url("pointer.png")
-        }
-      end
-
+    @restrooms = policy_scope(Restroom)
+    @reviews = Review.where(restroom_id: @restroom)
+    @markers = @restrooms.geocoded.map do |restroom|
+    {
+      lat: restroom.latitude,
+      lng: restroom.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {restroom: restroom}),
+      marker_html: render_to_string(partial: "marker")
+    }
+    end
   end
 
 
-    def show
-        authorize @restroom
-        @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
-        # @review = Review.new(user: current_user, restroom: @restroom)
-        @review = Review.new
-    end
+  def show
+    authorize @restroom
+    @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
+    # @review = Review.new(user: current_user, restroom: @restroom)
+    @review = Review.new
+  end
 
 
   def new
@@ -39,17 +37,17 @@ class RestroomsController < ApplicationController
   end
 
 
-    def bookmark
-        @restroom = Restroom.find(params[:restroom_id])
-        authorize @restroom
-        @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
-        if @bookmark
-            @bookmark.destroy
-        else
-            Bookmark.create(restroom: @restroom, user: current_user)
-        end
-        redirect_to restroom_path(@restroom)
-    end
+  def bookmark
+    @restroom = Restroom.find(params[:restroom_id])
+    authorize @restroom
+    @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
+    if @bookmark
+       @bookmark.destroy
+    else
+       Bookmark.create(restroom: @restroom, user: current_user)
+     end
+     redirect_to restroom_path(@restroom)
+  end
 
 
   def destroy

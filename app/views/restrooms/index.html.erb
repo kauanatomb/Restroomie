@@ -1,12 +1,46 @@
-<div>
-  <ul>
-  <%@restrooms.each do |restroom|  %>
-      <li><%= link_to restroom.name, restroom_path(restroom) %></li>
-  <%end %>
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary custom-navbar" style= "height: 80px">
+  <div class="container">
+    </div>
   </div>
-  </ul>
+</nav>
+<br>
+<div class="container">
+  <div class="row">
+    <% @restrooms.each do |restroom| %>
+      <div class="col-md-4">
+        <div class="card mb-4 ">
+          <%= link_to restroom, class: "bookmark-button no-hover" do %>
+            <%# IMG YAYA %>
+            <div class="card-body">
+              <h2 class="card-title"><%= restroom.name %></h2>
+              <% average_rating = restroom.reviews.pluck(:rating).sum/restroom.reviews.count.to_f %>
+            <% if average_rating %>
+              <p class="card-text">
+                <% average_rating.round.times do %>
+                  <i class="fa-solid fa-star"></i>
+                <% end %>
+              </p>
+            <% else %>
+              <p class="card-text">No reviews available.</p>
+            <% end %>
+
+              <p class="card-text"><i class="fas fa-euro"></i> <%= restroom.pricing %></p>
+              <% if restroom.accessibility %>
+                <p class="card-text"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
+              <% end %>
+              <% if restroom.baby_friendly %>
+                <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
+              <% end %>
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
