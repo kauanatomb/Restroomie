@@ -3,8 +3,8 @@ class RestroomsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-
     @restrooms = policy_scope(Restroom)
+    @reviews = Review.where(restroom_id: @restroom)
     @markers = @restrooms.geocoded.map do |restroom|
     {
       lat: restroom.latitude,
