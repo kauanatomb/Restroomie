@@ -77,7 +77,6 @@ class RestroomsController < ApplicationController
   end
 
   def restroom_params
-    params.require(:restroom).permit(:name, :address, :accessibility, :hygiene_products, :baby_friendly, :pricing, :cleanliness, :photo)
+    params.require(:restroom).permit(:name, :address, :accessibility, :hygiene_products, :baby_friendly, :pricing, :cleanliness, photos: [])
   end
 end
-

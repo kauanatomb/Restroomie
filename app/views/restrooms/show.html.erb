@@ -10,12 +10,13 @@
   <% end %>
 <% end %>
 
-<%= @restroom.name %>
-<%= button_to "Destroy this restroom", @restroom, method: :delete if policy(@restroom).destroy? %>
+<% @restroom.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 
 <div class="row">
     <div class="col-12 col-sm-6">
-      <h3>Reviews</h3> 
+      <h3>Reviews</h3>
       <%= link_to "See all", restroom_reviews_path(@restroom)%>
       <% if @restroom.reviews.empty? %>
         <small><em class="text-muted">Be the first one to review this list</em></small>
