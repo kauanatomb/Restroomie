@@ -24,3 +24,8 @@ hr {
 body {
   font-family: "Work Sans", sans-serif;
 }
+
+.no-hover:hover {
+  text-decoration: none !important;
+  color: black !important;
+}

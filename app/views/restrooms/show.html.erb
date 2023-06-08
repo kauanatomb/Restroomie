@@ -1,7 +1,9 @@
 <div class="container justify-content-center">
   <div class="restroom-card">
     <div class="image-card">
-      <img src="https://dwgyu36up6iuz.cloudfront.net/heru80fdn/image/upload/c_fill,d_placeholder_wired.png,fl_progressive,g_face,h_1080,q_80,w_1920/v1637246862/wired_wired-news-and-science-the-21st-century-toilet.jpg">
+      <% @restroom.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
     </div>
 
     <div class="card-body">
