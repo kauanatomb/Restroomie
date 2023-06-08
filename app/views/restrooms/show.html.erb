@@ -1,39 +1,49 @@
-<% if current_user %>
-  <% if @bookmark %>
-    <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
-        <i class="fa-solid fa-bookmark"></i>
-    <% end %>
-  <% else %>
-    <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
-        <i class="fa-regular fa-bookmark"></i>
-    <% end %>
-  <% end %>
-<% end %>
-
-<%= @restroom.name %>
-<%= button_to "Destroy this restroom", @restroom, method: :delete if policy(@restroom).destroy? %>
-
-<div class="row">
-    <div class="col-12 col-sm-6">
-      <h3>Reviews</h3> 
-      <%= link_to "See all", restroom_reviews_path(@restroom)%>
-      <% if @restroom.reviews.empty? %>
-        <small><em class="text-muted">Be the first one to review this list</em></small>
-      <% end %>
-      <% @restroom.reviews.order(created_at: :desc).limit(3).each do |review| %>
-  <div>
-    <% review.rating.times do %>
-      <i class="fas fa-star star-yellow"></i>
-    <% end %>
-    <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-    <p class="mb-0"><%= review.comment %></p>
-  </div>
-  <hr>
-<% end %>
-
+<div class="container justify-content-center">
+  <div class="restroom-card">
+    <div class="image-card">
+      <img src="https://dwgyu36up6iuz.cloudfront.net/heru80fdn/image/upload/c_fill,d_placeholder_wired.png,fl_progressive,g_face,h_1080,q_80,w_1920/v1637246862/wired_wired-news-and-science-the-21st-century-toilet.jpg">
     </div>
-    <div class="col-12 col-sm-6">
-      <div class="bg-white rounded p-3">
+
+    <div class="card-body">
+      <h2 class="card-title"><%= @restroom.name%></h2>
+      <% if current_user %>
+        <div class="bookmark-section">
+          <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
+          <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
+            <i class="<%= bookmark_button_class %> fa-bookmark"></i>
+          <% end %>
+        </div>
+      <% end %>
+      <p class="card-text">Location: <%= @restroom.address %></p>
+      <p class="card-text">Price: <%= @restroom.pricing %></p>
+    </div>
+
+    <hr>
+
+    <div class="review-section">
+      <div class="card-body">
+        <h3>Reviews</h3>
+        <%= link_to "See all", restroom_reviews_path(@restroom) %>
+        <% if @restroom.reviews.empty? %>
+          <small><em class="text-muted">Be the first one to review this list</em></small>
+        <% else %>
+          <% @restroom.reviews.order(created_at: :desc).limit(3).each do |review| %>
+            <div>
+              <% review.rating.times do %>
+                <i class="fas fa-star star-yellow"></i>
+              <% end %>
+              <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+              <p class="card-text mb-0"><%= review.comment %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="card-body">
+      <div>
         <h5>Add your review</h5>
         <%= simple_form_for [@restroom, @review] do |f| %>
           <%= f.input :comment, placeholder: "Add your review here..." %>
