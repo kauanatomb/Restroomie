@@ -16,12 +16,12 @@ class RestroomsController < ApplicationController
   end
 
 
-    def show
-        authorize @restroom
-        @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
-        # @review = Review.new(user: current_user, restroom: @restroom)
-        @review = Review.new
-    end
+  def show
+    authorize @restroom
+    @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
+    # @review = Review.new(user: current_user, restroom: @restroom)
+    @review = Review.new
+  end
 
 
   def new
@@ -37,17 +37,17 @@ class RestroomsController < ApplicationController
   end
 
 
-    def bookmark
-        @restroom = Restroom.find(params[:restroom_id])
-        authorize @restroom
-        @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
-        if @bookmark
-            @bookmark.destroy
-        else
-            Bookmark.create(restroom: @restroom, user: current_user)
-        end
-        redirect_to restroom_path(@restroom)
-    end
+  def bookmark
+    @restroom = Restroom.find(params[:restroom_id])
+    authorize @restroom
+    @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
+    if @bookmark
+       @bookmark.destroy
+    else
+       Bookmark.create(restroom: @restroom, user: current_user)
+     end
+     redirect_to restroom_path(@restroom)
+  end
 
 
   def destroy
