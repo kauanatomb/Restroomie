@@ -1,46 +1,44 @@
 <h1>Welcome to Your Dashboard, <%= current_user.username %>!</h1>
 
-  <h2>Your reviews:</h2>
-    <ul>
-      <% if @reviews.empty? %>
-        <p>No reviews created.</p>
-      <% else %>
-        <% @reviews.each do |bookmark| %>
-          <% tool = Review.find_by(id: review.restroom_id) %>
-          <h5 class="card-title"><%= Review.name %></h5>
-
-              <%# Insert code %>
-
-        <% end %>
-      <% end %>
-    </ul>
-
+<div>
   <h2>Your bookmarks:</h2>
     <ul>
       <% if @bookmarks.empty? %>
         <p>No bookmarks created.</p>
       <% else %>
-        <% @bookmarks.each do |bookmark| %>
-          <% tool = Restroom.find_by(id: bookmark.restroom_id) %>
-          <h5 class="card-title"><%= Restroom.name %></h5>
-
-              <%# Insert code %>
-
-        <% end %>
+          <% @bookmarks.each do |bookmark| %>
+            <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
+            <%= link_to bookmark.name, restroom_path(bookmark) %>
+          <% end %>
       <% end %>
     </ul>
+</div>
 
   <h2>Your restrooms:</h2>
     <ul>
       <% if @restrooms.empty? %>
         <p>No restrooms created.</p>
       <% else %>
-        <% @restrooms.each do |bookmark| %>
-          <% tool = Restroom.find_by(id: restroom_id) %>
-          <h5 class="card-title"><%= Restroom.name %></h5>
-
-              <%# Insert code %>
-
+        <% @restrooms.each do |restroom| %>
+          <% restroom = Restroom.find_by(user_id: @user.id) %>
+          <%= link_to restroom.name, restroom_path(restroom) %>
         <% end %>
       <% end %>
     </ul>
+
+<div>
+  <h2>Your reviews:</h2>
+  <ul>
+    <% if @reviews.empty? %>
+      <p>No reviews created.</p>
+    <% else %>
+      <% @reviews.each do |review| %>
+        <% restroom = Restroom.find_by(id: review.restroom_id) %>
+        <li>
+          <%= link_to "#{review.comment} - #{restroom.name}", restroom_path(restroom) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+

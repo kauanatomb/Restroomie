@@ -8,9 +8,14 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
+
     journeyShow: String,
     address: String,
     coordinates: String,
+
+  
+
+
   }
 
   connect() {
@@ -80,6 +85,7 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
+
   navigation() {
     this.#getRoute(event.target.dataset.restroomlnglat)
   }
@@ -96,6 +102,7 @@ export default class extends Controller {
         `https://api.mapbox.com/directions/v5/mapbox/walking/${addresses}?steps=true&geometries=geojson&access_token=pk.eyJ1IjoicHRyY2ticmQiLCJhIjoiY2xpbXl3aWo3MHA5YjNqcGN1YjIxYnh2NiJ9.sgf0kRucW61e1gvLaFvp1w`,
         { method: 'GET' }
         );
+
       const json = await query.json();
       if (json.routes) {
         const data = json.routes[0];
@@ -199,3 +206,21 @@ export default class extends Controller {
     }
   }
 }
+
+
+// GEOCODING
+// map.addControl(
+//   new mapboxgl.GeolocateControl({
+//   positionOptions: {
+//   enableHighAccuracy: true
+//   },
+//   // When active the map will receive updates to the device's location as it changes.
+//   trackUserLocation: true,
+//   // Draw an arrow next to the location dot to indicate which direction the device is heading.
+//   showUserHeading: true
+//   })
+//   );
+
+// Option for driving route as well - just weighted differently???
+
+
