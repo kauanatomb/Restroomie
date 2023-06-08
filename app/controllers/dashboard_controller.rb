@@ -2,8 +2,8 @@ class DashboardController < ApplicationController
   def index
     skip_authorization
     @user = current_user
-    @bookmarks = @user.bookmarks
-    @restrooms = @user.restrooms
-    @reviews = @user.reviews.includes(:restroom)
+    @bookmarks = current_user.bookmarks
+    @restrooms = current_user.restrooms
+    @reviews = current_user.reviews
   end
 end
