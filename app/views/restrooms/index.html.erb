@@ -1,9 +1,12 @@
-<ul>
-<%@restrooms.each do |restroom|  %>
-    <li><%= link_to restroom.name, restroom_path(restroom) %></li>
-<%end %>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-</ul>
+<div>
+  <ul>
+  <%@restrooms.each do |restroom|  %>
+      <li><%= link_to restroom.name, restroom_path(restroom) %></li>
+  <%end %>
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  </ul>
+</div>
