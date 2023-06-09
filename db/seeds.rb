@@ -147,8 +147,6 @@ Restroom.create!(
   approved: true
 )
 
-=======
-
 User.create!(
   email: "user1@example.com",
   password: "123456",
