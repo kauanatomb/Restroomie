@@ -1,3 +1,20 @@
 body {
-  background: #c0c8cc;
+  background: #FDF5D8;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.centered-content {
+  text-align: center;
 }
