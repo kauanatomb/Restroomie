@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :restrooms
+  has_many :restrooms, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :reviews
   # Include default devise modules. Others available are:

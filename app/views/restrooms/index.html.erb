@@ -1,4 +1,4 @@
-<div style="width: 100%; height: 600px;"
+<div style="width: 100%; height: 695px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -9,36 +9,48 @@
   </div>
 </nav>
 <br>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <% @restrooms.each do |restroom| %>
-      <div class="col-md-4">
-        <div class="card mb-4 ">
+      <div class="col-12 mt-3">
+        <div class="mb-4 restroom-card" style="max-height: 150px;">
           <%= link_to restroom, class: "bookmark-button no-hover" do %>
-            <%# IMG YAYA %>
-            <div class="card-body">
-              <h2 class="card-title"><%= restroom.name %></h2>
-              <% if restroom.reviews.present? %>
-                <% average_rating = restroom.reviews.pluck(:rating).sum/restroom.reviews.count.to_f %>
-              <% if average_rating %>
-                <p class="card-text">
-                  <% average_rating.round.times do %>
-                    <i class="fa-solid fa-star"></i>
+            <div class="d-flex" style="max-height: 150px;">
+              <div class="col-md-4 ">
+                <% if restroom.photos.present? %>
+                  <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
+                <% end %>
+              </div>
+                <div class="card-body m-0">
+                  <h5 class="card-title"><strong><%= restroom.name %></strong></h5>
+                  <% if restroom.reviews.present? %>
+                    <% average_rating = restroom.reviews.pluck(:rating).sum/restroom.reviews.count.to_f %>
+                    <% if average_rating %>
+                      <p class="card-text ">
+                        <% average_rating.round.times do %>
+                          <i class="fa-solid fa-star"></i>
+                        <% end %>
+                      </p>
+                    <% else %>
+                      <p class="card-text">No reviews available.</p>
+                    <% end %>
+                  <% else %>
+                    <p class="card-text">No reviews available.</p>
                   <% end %>
-                </p>
-              <% else %>
-                <p class="card-text">No reviews available.</p>
-              <% end %>
-            <% end %>
-
-              <p class="card-text"><i class="fas fa-euro"></i> <%= restroom.pricing %></p>
-              <% if restroom.accessibility %>
-                <p class="card-text"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
-              <% end %>
-              <% if restroom.baby_friendly %>
-                <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
-              <% end %>
-
+                  <p class="card-text overflow-wrap">
+                    <% if restroom.pricing %>
+                      <i class="fas fa-euro"></i> <%= restroom.pricing %>
+                    <% else %>
+                      Free
+                    <% end %>
+                  </p>
+                  <% if restroom.accessibility %>
+                    <p class="card-text"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
+                  <% end %>
+                  <% if restroom.baby_friendly %>
+                    <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
+                  <% end %>
+              </div>
             </div>
           <% end %>
         </div>
