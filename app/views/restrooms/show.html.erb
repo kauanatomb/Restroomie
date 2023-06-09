@@ -12,17 +12,14 @@
     <div class="card-body">
       <h2 class="card-title show-flexbox">
         <%= @restroom.name%>
-      </h2>
+     
         <% if current_user %>
-
-        <%# <div class="bookmark-section"> %>
-
           <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
           <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
             <i class="<%= bookmark_button_class %> fa-bookmark"></i>
           <% end %>
         <% end %>
-
+      </h2>
       <br>
 
         <%# </div> %>
