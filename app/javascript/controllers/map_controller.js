@@ -13,7 +13,7 @@ export default class extends Controller {
     address: String,
     coordinates: String,
 
-  
+
 
 
   }
@@ -222,5 +222,3 @@ export default class extends Controller {
 //   );
 
 // Option for driving route as well - just weighted differently???
-
-
