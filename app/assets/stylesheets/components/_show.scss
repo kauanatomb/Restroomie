@@ -3,7 +3,13 @@
   // border: 0.5px solid rgba(156, 148, 148, 0.85);
   border-radius: 12px;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
+}
+
+.image-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
 }
 
 .image-card > img {
@@ -33,7 +39,17 @@ hr {
   align-items: flex-start;
 }
 
+.review-flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
 .no-hover:hover {
   text-decoration: none !important;
   color: black !important;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
 }
