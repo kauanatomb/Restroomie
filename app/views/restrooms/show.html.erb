@@ -40,8 +40,10 @@
 
     <div class="review-section">
       <div class="card-body">
+        <div class="review-flexbox">
         <h3>Reviews</h3>
         <%= link_to "See all", restroom_reviews_path(@restroom) %>
+        </div>
         <% if @restroom.reviews.empty? %>
           <small><em class="text-muted">Be the first one to review this list</em></small>
         <% else %>
@@ -61,12 +63,14 @@
     <hr>
 
     <div class="card-body">
-      <div>
+      <div class>
         <h5>Add your review</h5>
         <%= simple_form_for [@restroom, @review] do |f| %>
           <%= f.input :comment, placeholder: "Add your review here..." %>
           <%= f.input :rating, as: :select, collection: (1..5), required: true, label: false, input_html: { data: { controller: "star-rating" } } %>
-          <%= f.submit class: "btn btn-flat mt-2" %>
+          <div class="form-button">
+          <%= f.submit class:"button-30" %>
+          </div>
         <% end %>
       </div>
     </div>
