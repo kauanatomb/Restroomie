@@ -8,12 +8,9 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
-
     journeyShow: String,
     address: String,
     coordinates: String,
-
-
 
 
   }
@@ -26,6 +23,16 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/ptrckbrd/clikbwk2300ez01pg0mrwapiu"
     })
+
+    // disable zooming and panning initially
+    this.map.scrollZoom.disable();
+    this.map.dragPan.disable();
+
+    // enable zooming and panning on first click
+    this.map.on('click', () => {
+      this.map.scrollZoom.enable();
+      this.map.dragPan.enable();
+    });
 
     if (this.map) {
       this.#addMarkersToMap();
