@@ -3,7 +3,13 @@
   // border: 0.5px solid rgba(156, 148, 148, 0.85);
   border-radius: 12px;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
+}
+
+.image-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
 }
 
 .image-card > img {
@@ -12,13 +18,30 @@
   // margin: 0 auto;
 }
 
+h2 {
+  margin-bottom: 5px;
+}
+
+.card-text {
+  line-height: 1.5;
+}
+
 hr {
   width: 80%;
   margin: auto;
 }
 
-body {
-  font-family: "Work Sans", sans-serif;
+.show-flexbox {
+  margin-top: 10px;
+  display: flex;
+  // justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.review-flexbox {
+  display: flex;
+  justify-content: space-between;
 }
 
 .no-hover:hover {
@@ -26,7 +49,12 @@ body {
   color: black !important;
 }
 
+
 .card-text {
   line-height: 1.5;
   margin:0;
+
+.form-button {
+  display: flex;
+  justify-content: center;
 }
