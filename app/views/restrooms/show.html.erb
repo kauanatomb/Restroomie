@@ -13,7 +13,6 @@
     <div class="card-body">
       <h2 class="card-title show-flexbox">
         <%= @restroom.name%>
-     
         <% if current_user %>
           <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
           <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
