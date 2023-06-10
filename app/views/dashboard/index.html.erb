@@ -1,44 +1,59 @@
-<h1>Welcome to Your Dashboard, <%= current_user.username %>!</h1>
+<div class="dashboard-header">
+<h1>Welcome to Your Piss-tory, <%= current_user.username %>!</h1>
+</div>
+
+<hr>
 
 <div>
   <h2>Your bookmarks:</h2>
-    <ul>
+    <ul class="container-fluid">
       <% if @bookmarks.empty? %>
         <p>No bookmarks created.</p>
       <% else %>
           <% @bookmarks.each do |bookmark| %>
+          <div class="card-body">
             <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
             <%= link_to bookmark.name, restroom_path(bookmark) %>
+          </div>
           <% end %>
       <% end %>
     </ul>
 </div>
 
+<hr>
+
+<div>
   <h2>Your restrooms:</h2>
-    <ul>
+    <ul class="container-fluid">
       <% if @restrooms.empty? %>
         <p>No restrooms created.</p>
       <% else %>
         <% @restrooms.each do |restroom| %>
+        <div class="card-body">
           <% restroom = Restroom.find_by(user_id: @user.id) %>
           <%= link_to restroom.name, restroom_path(restroom) %>
+        </div>
         <% end %>
       <% end %>
     </ul>
+  </div>
+
+<hr>
 
 <div>
   <h2>Your reviews:</h2>
-  <ul>
+  <ul class="container-fluid">
     <% if @reviews.empty? %>
       <p>No reviews created.</p>
     <% else %>
       <% @reviews.each do |review| %>
+      <div class="card-body">
         <% restroom = Restroom.find_by(id: review.restroom_id) %>
         <li>
           <%= link_to "#{review.comment} - #{restroom.name}", restroom_path(restroom) %>
         </li>
+      </div>
       <% end %>
     <% end %>
   </ul>
 </div>
-
