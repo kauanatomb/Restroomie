@@ -22,7 +22,7 @@
                 <% end %>
               </div>
                 <div class="card-body m-0">
-                  <h5 class="card-title"><strong><%= restroom.name %></strong></h5>
+                  <h5 class="card-title"><%= restroom.name %></h5>
                   <% if restroom.reviews.present? %>
                     <% average_rating = restroom.reviews.pluck(:rating).sum/restroom.reviews.count.to_f %>
                     <% if average_rating %>

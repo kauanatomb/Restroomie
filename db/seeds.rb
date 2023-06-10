@@ -22,7 +22,7 @@ User.create!(
 )
 
 Restroom.create!(
-  name: "Alexanderplatz Restroom",
+  name: "Alexanderplatz",
   address: "Alexanderplatz 1, 10178 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -36,7 +36,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Friedrichstraße Restroom",
+  name: "Friedrichstraße",
   address: "Friedrichstraße 123, 10117 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -50,7 +50,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Potsdamer Platz Restroom",
+  name: "Potsdamer Platz",
   address: "Potsdamer Platz 2, 10785 Berlin",
   accessibility: false,
   hygiene_products: false,
@@ -64,7 +64,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Unter den Linden Restroom",
+  name: "Unter den Linden",
   address: "Unter den Linden 77, 10117 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -78,7 +78,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Kurfürstendamm Restroom",
+  name: "Kurfürstendamm",
   address: "Kurfürstendamm 220, 10719 Berlin",
   accessibility: true,
   hygiene_products: false,
@@ -92,7 +92,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Schlossplatz Restroom",
+  name: "Schlossplatz",
   address: "Schlossplatz 5, 10178 Berlin",
   accessibility: false,
   hygiene_products: true,
@@ -106,7 +106,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Brandenburger Tor Restroom",
+  name: "Brandenburger Tor",
   address: "Brandenburger Tor 1, 10117 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -120,7 +120,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Museum Island Restroom",
+  name: "Museum Island",
   address: "Museum Island, 10178 Berlin",
   accessibility: true,
   hygiene_products: false,
@@ -134,7 +134,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Gendarmenmarkt Restroom",
+  name: "Gendarmenmarkt",
   address: "Gendarmenmarkt, 10117 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -148,7 +148,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Hackescher Markt Restroom",
+  name: "Hackescher Markt",
   address: "Hackescher Markt, 10178 Berlin",
   accessibility: false,
   hygiene_products: true,
@@ -162,7 +162,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Checkpoint Charlie Restroom",
+  name: "Checkpoint Charlie",
   address: "Friedrichstraße 43-45, 10117 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -176,7 +176,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Tiergarten Park Restroom",
+  name: "Tiergarten Park",
   address: "Straße des 17. Juni, 10557 Berlin",
   accessibility: true,
   hygiene_products: false,
@@ -190,7 +190,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "East Side Gallery Restroom",
+  name: "East Side Gallery",
   address: "Mühlenstraße 3-100, 10243 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -204,7 +204,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Charlottenburg Palace Restroom",
+  name: "Charlottenburg Palace",
   address: "Spandauer Damm 10-22, 14059 Berlin",
   accessibility: false,
   hygiene_products: true,
@@ -218,7 +218,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Berlin Wall Memorial Restroom",
+  name: "Berlin Wall Memorial",
   address: "Bernauer Straße 119, 13355 Berlin",
   accessibility: true,
   hygiene_products: false,
@@ -232,7 +232,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Berlin Cathedral Restroom",
+  name: "Berlin Cathedral",
   address: "Am Lustgarten, 10178 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -246,7 +246,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Olympic Stadium Restroom",
+  name: "Olympic Stadium",
   address: "Olympischer Platz 3, 14053 Berlin",
   accessibility: false,
   hygiene_products: true,
@@ -260,7 +260,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Victory Column Restroom",
+  name: "Victory Column",
   address: "Großer Stern, 10557 Berlin",
   accessibility: true,
   hygiene_products: true,
@@ -274,7 +274,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Berlin TV Tower Restroom",
+  name: "Berlin TV Tower",
   address: "Panoramastraße 1A, 10178 Berlin",
   accessibility: true,
   hygiene_products: false,
@@ -288,7 +288,7 @@ Restroom.create!(
 )
 
 Restroom.create!(
-  name: "Berlin Central Station Restroom",
+  name: "Berlin Central Station",
   address: "Europaplatz 1, 10557 Berlin",
   accessibility: true,
   hygiene_products: true,
