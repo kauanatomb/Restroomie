@@ -33,8 +33,23 @@
             <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
           <% end %>
       </div>
+
       <br>
+
       <p class="card-text">Address: <%= @restroom.address %></p>
+      <br>
+      <hr>
+
+    </div>
+
+
+    <div class="card-body">
+      <h2>
+      <%# SHOULD LINK TO THE TOILET ON THE MAP %>
+        <%= link_to icon('fa-solid', 'diamond-turn-right'), restrooms_path %>
+      <%# SHOULD BOOKMARK THE TOILET %>
+        <%= link_to icon('fa-solid', 'bookmark'), dashboard_path %>
+      </h2>
     </div>
 
     <hr>
