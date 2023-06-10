@@ -1,6 +1,7 @@
 require "open-uri"
-Restroom.destroy_all
+
 User.destroy_all
+Restroom.destroy_all
 
 User.create!(
   email: "user1@example.com",
