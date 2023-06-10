@@ -18,8 +18,10 @@
   // margin: 0 auto;
 }
 
-h2 {
+h1, h2 {
+  margin-top: 5px;
   margin-bottom: 5px;
+  padding: 5px;
 }
 
 .card-text {
