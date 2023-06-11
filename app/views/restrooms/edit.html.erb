@@ -1,3 +1,5 @@
+<h1>Edit Restroom</h1>
+
 <div class="container">
   <%= form_with(model: @restroom, local: true, class: 'form') do |form| %>
     <% if @restroom.errors.any? %>
@@ -51,10 +53,9 @@
       <%= form.file_field :photo, as: :file, input_html: { multiple: true }, class: 'form-control' %>
     </div>
 
-    <div class="form-actions text-center mt-3">
-      <%= form.submit 'Save', class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', restrooms_path, class: 'btn btn-secondary' %>
+    <div class="form-actions d-flex justify-content-around text-center mt-3">
+      <%= button_to 'Update restroom', @restroom, method: :patch, class: 'btn btn-primary' %>
+      <%= button_to 'Back to Restroom', @restroom, method: :patch, class: 'btn btn-secondary' %>
     </div>
   <% end %>
 </div>
-

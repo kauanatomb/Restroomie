@@ -22,34 +22,39 @@
                 <% end %>
               </div>
                 <div class="card-body m-0">
-                  <h5 class="card-title"><%= restroom.name %></h5>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title"><%=  restroom.name  %></h5>
+                    <% if restroom.approved %>
+                      <i class="fa-solid fa-circle-check"></i>
+                    <% end %>
+                  </div>
                   <% if restroom.reviews.present? %>
                     <% average_rating = restroom.reviews.pluck(:rating).sum/restroom.reviews.count.to_f %>
-                    <% if average_rating %>
-                      <p class="card-text ">
-                        <% average_rating.round.times do %>
-                          <i class="fa-solid fa-star"></i>
-                        <% end %>
-                      </p>
-                    <% else %>
-                      <p class="card-text">No reviews available.</p>
+                    <% average_rating.round.times do %>
+                      <i class="fa-solid fa-star"></i>
                     <% end %>
                   <% else %>
                     <p class="card-text">No reviews available.</p>
                   <% end %>
-                  <p class="card-text overflow-wrap">
+                  <p class="card-text">
                     <% if restroom.pricing %>
                       <i class="fas fa-euro"></i> <%= restroom.pricing %>
                     <% else %>
-                      Free
-                    <% end %>
-                  </p>
-                  <% if restroom.accessibility %>
-                    <p class="card-text"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
-                  <% end %>
-                  <% if restroom.baby_friendly %>
+                      <div class="d-flex align-items-center">
+                        <i class="fas fa-euro"></i>
+                        <p class="ml-2 mb-0">Free</p>
+                      </div>
+                    <% end %></p>
+                  <% if restroom.accessibility && restroom.baby_friendly %>
+                    <div class="d-flex">
+                      <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p><p class="card-text"><i class="fa-solid fa-baby"></i></p>
+                    </div>
+                  <% elsif restroom.accessibility %>
+                    <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
+                  <% elsif restroom.baby_friendly %>
                     <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
                   <% end %>
+                  <%= link_to "Create new", new_restroom_path() %>
               </div>
             </div>
           <% end %>
