@@ -1,5 +1,5 @@
 class RestroomsController < ApplicationController
-  before_action :set_restroom, only: [:show, :destroy]
+  before_action :set_restroom, only: [:show, :destroy, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -33,6 +33,11 @@ class RestroomsController < ApplicationController
   def create
     @restroom = Restroom.new(restroom_params)
     @restroom.user = current_user
+    if @restroom.save
+      redirect_to @restroom, notice: 'Restroom was successfully created.'
+    else
+      render :index
+    end
     authorize @restroom
   end
 
@@ -49,13 +54,25 @@ class RestroomsController < ApplicationController
      redirect_to restroom_path(@restroom)
   end
 
-
   def destroy
     @restroom.destroy
     authorize @restroom
     redirect_to restrooms_path
     # redirect to admin dashboard (in future)
     # notice/alert that the restroom was deleted
+  end
+
+  def edit
+    authorize @restroom
+  end
+
+  def update
+    if @restroom.update(restroom_params)
+      redirect_to restroom_path(@restroom), notice: 'Restroom was successfully updated.'
+    else
+      render :edit
+    end
+    authorize @restroom
   end
 
   private
@@ -65,6 +82,6 @@ class RestroomsController < ApplicationController
   end
 
   def restroom_params
-    params.require(:restroom).permit(:name, :address, :accessibility, :hygiene_products, :baby_friendly, :pricing, :cleanliness, photos: [])
+    params.require(:restroom).permit(:name, :address, :accessibility, :closing_time, :baby_friendly, :pricing, :opening_time, photo: [])
   end
 end
