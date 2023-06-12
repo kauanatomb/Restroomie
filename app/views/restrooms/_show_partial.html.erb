@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-12 mt-3">
+        <div class="mb-4 restroom-card" style="max-height: 150px;">
+          <%= link_to restroom, class: "bookmark-button no-hover" do %>
+            <div class="d-flex" style="max-height: 150px;">
+                <div class="card-body m-0">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title"><%=  restroom.name  %></h5>
+                    <% if restroom.approved %>
+                      <i class="fa-solid fa-circle-check"></i>
+                    <% end %>
+                  </div>
+                    <%#= link_to icon('fa-solid', 'diamond-turn-right'), restrooms_path, data: { url: restroom_path(id: restroom_id), action: "click->slide#navigation", restroomLngLat: restroomLngLat }%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
