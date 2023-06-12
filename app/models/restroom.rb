@@ -5,5 +5,6 @@ class Restroom < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many_attached :photos
+  has_one_attached :photo
   validates :name, :address, presence: true
 end
