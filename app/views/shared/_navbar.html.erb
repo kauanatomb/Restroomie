@@ -5,7 +5,11 @@
     <% end %>
     <%= link_to "Restroomie", '/restrooms', class: "navbar-brand" %>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <% if user_signed_in? %>
       <span><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %></span>
+    <% else %>
+      <span class="navbar-toggler-icon"></span>
+    <% end %>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

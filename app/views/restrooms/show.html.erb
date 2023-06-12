@@ -1,20 +1,23 @@
 <div class="container justify-content-center">
   <div class="restroom-card">
     <div class="image-card">
-      <% @restroom.photos.each do |photo| %>
-        <%= cl_image_tag photo.key %>
+      
+      <% if @restroom.photo.attached? %>
+        <%= cl_image_tag @restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
+      <% elsif @restroom.photos.present? %>
+        <% @restroom.photos.each do |photo| %>
+          <%= cl_image_tag photo.key %>
+        <% end %>
+      <% else %>
+        <p>No Image Available</p>
       <% end %>
     </div>
-
 
     <div class="card-body">
       <h2 class="card-title show-flexbox">
         <%= @restroom.name%>
-        <% if current_user %>
-          <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
-          <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
-            <i class="<%= bookmark_button_class %> fa-bookmark"></i>
-          <% end %>
+        <%= link_to edit_restroom_path(@restroom) do %>
+          <i class="fa-regular fa-pen-to-square"></i>
         <% end %>
       </h2>
       <br>
@@ -22,7 +25,14 @@
         <%# </div> %>
       <div class="show-flexbox">
         <p class="card-text">
-        <i class="fas fa-euro"></i> <%= @restroom.pricing %></p>
+        <% if @restroom.pricing %>
+          <i class="fas fa-euro"></i> <%= @restroom.pricing %>
+        <% else %>
+          <div class="d-flex">
+            <i class="fas fa-euro"></i>
+            <p class="ml-2 mb-0">Free</p>
+          </div>
+        <% end %></p>
           <% if @restroom.accessibility %>
             <p class="card-text"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
           <% end %>
@@ -30,25 +40,24 @@
             <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
           <% end %>
       </div>
-
       <br>
-
       <p class="card-text">Address: <%= @restroom.address %></p>
       <br>
       <hr>
-
     </div>
-
-
-    <div class="card-body">
+    <div class="card-body d-flex justify-content-around">
       <h2>
       <%# SHOULD LINK TO THE TOILET ON THE MAP %>
         <%= link_to icon('fa-solid', 'diamond-turn-right'), restrooms_path %>
-      <%# SHOULD BOOKMARK THE TOILET %>
-        <%= link_to icon('fa-solid', 'bookmark'), dashboard_path %>
+        <% if current_user %>
+          <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
+          <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
+            <i class="<%= bookmark_button_class %> fa-bookmark"></i>
+          <% end %>
+        <% end %>
       </h2>
     </div>
-
+    
     <hr>
 
     <div class="review-section">
@@ -58,7 +67,7 @@
         <%= link_to "See all", restroom_reviews_path(@restroom) %>
         </div>
         <% if @restroom.reviews.empty? %>
-          <small><em class="text-muted">Be the first one to review this list</em></small>
+          <small><em class="text-muted">Be the first one to review this restroom</em></small>
         <% else %>
           <% @restroom.reviews.order(created_at: :desc).limit(3).each do |review| %>
             <div>
@@ -73,7 +82,7 @@
       </div>
     </div>
 
-  <%= link_to "Edit", edit_restroom_path(@restroom) %>
+  
     <hr>
 
     <div class="card-body">
