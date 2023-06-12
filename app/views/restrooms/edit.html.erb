@@ -27,35 +27,24 @@
       <%= form.text_field :pricing, class: 'form-control' %>
     </div>
 
-
-    <div class="form-group mt-2">
-      <%= form.label :opening_time, "Opening time" %>
-      <%= form.time_field :opening_time, class: 'form-control' %>
-    </div>
-
-    <div class="form-group mt-2">
-      <%= form.label :closing_time, "Closing time" %>
-      <%= form.time_field :closing_time, class: 'form-control' %>
-    </div>
-
-    <div class="form-check form-check-inline mt-2">
+    <div class="form-check-inline mt-2 pl-0">
       <%= form.label :accessibility, "Accessibility" %>
       <%= form.check_box :accessibility %>
     </div>
 
-    <div class="form-check form-check-inline mt-2">
+    <div class="form-check-inline mt-2">
       <%= form.label :baby_friendly, "Baby Friendly" %>
       <%= form.check_box :baby_friendly %>
     </div>
 
     <div class="form-group mt-2">
       <%= form.label :photo %>
-      <%= form.file_field :photo, as: :file, input_html: { multiple: true }, class: 'form-control' %>
+      <%= form.file_field :photo, as: :file, class: 'form-control' %>
     </div>
 
     <div class="form-actions d-flex justify-content-around text-center mt-3">
       <%= button_to 'Update restroom', @restroom, method: :patch, class: 'btn btn-primary' %>
-      <%= button_to 'Back to Restroom', @restroom, method: :patch, class: 'btn btn-secondary' %>
+      <%= link_to 'Cancel', restroom_path(@restroom), class: 'btn btn-secondary' %>
     </div>
   <% end %>
 </div>

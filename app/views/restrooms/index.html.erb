@@ -16,9 +16,13 @@
         <div class="mb-4 restroom-card" style="max-height: 150px;">
           <%= link_to restroom, class: "bookmark-button no-hover" do %>
             <div class="d-flex" style="max-height: 150px;">
-              <div class="col-md-4 ">
-                <% if restroom.photos.present? %>
+              <div class="col-md-4">
+                <% if restroom.photo.attached? %>
+                  <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
+                <% elsif restroom.photos.present? %>
                   <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
+                <% else %>
+                  <p>No Image Available</p>
                 <% end %>
               </div>
                 <div class="card-body m-0">
@@ -54,7 +58,6 @@
                   <% elsif restroom.baby_friendly %>
                     <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
                   <% end %>
-                  <%= link_to "Create new", new_restroom_path() %>
               </div>
             </div>
           <% end %>
@@ -63,3 +66,13 @@
     <% end %>
   </div>
 </div>
+
+<div class="position-fixed bottom-0 end-0 p-3">
+  <%= link_to new_restroom_path, class: "btn rounded-circle shadow-lg", style: "background-color: #85C0EA; color: black;" do %>
+    <i class="fas fa-plus"></i>
+  <% end %>
+</div>
+
+
+
+

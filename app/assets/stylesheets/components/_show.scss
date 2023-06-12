@@ -6,12 +6,6 @@
   padding: 20px;
 }
 
-.image-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
-}
-
 .image-card > img {
   height: 250px;
   width: 100%;
