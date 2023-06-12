@@ -6,4 +6,6 @@ class Restroom < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many_attached :photos
   validates :name, :address, presence: true
+  attribute :hygiene_products, :string
+  attribute :cleanliness, :integer
 end

@@ -1,29 +1,32 @@
 <div class="dashboard-header">
-<h1>Welcome to Your Piss-tory, <%= current_user.username %>!</h1>
+<h1>Welcome to Your dashbaord, <%= current_user.username %>!</h1>
 </div>
 
 <hr>
 
+<%# added the entire card clickable %>
 <div>
   <h2>Your bookmarks:</h2>
-    <ul class="container-fluid">
-      <% if @bookmarks.empty? %>
-        <p>No bookmarks created.</p>
-      <% else %>
-          <% @bookmarks.each do |bookmark| %>
+  <ul class="container-fluid">
+    <% if @bookmarks.empty? %>
+      <p>No bookmarks created.</p>
+    <% else %>
+      <% @bookmarks.each do |bookmark| %>
+        <%= link_to restroom_path(bookmark) do %>
           <div class="card-body">
             <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
-            <%= link_to bookmark.name, restroom_path(bookmark) %>
+            <%= bookmark.name %>
           </div>
-          <% end %>
+        <% end %>
       <% end %>
-    </ul>
+    <% end %>
+  </ul>
 </div>
 
 <hr>
 
-<div>
-  <h2>Your restrooms:</h2>
+  <div>
+   <h2>Your restrooms:</h2>
     <ul class="container-fluid">
       <% if @restrooms.empty? %>
         <p>No restrooms created.</p>
