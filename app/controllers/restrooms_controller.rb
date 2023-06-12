@@ -10,7 +10,7 @@ class RestroomsController < ApplicationController
       lat: restroom.latitude,
       lng: restroom.longitude,
       info_window_html: render_to_string(partial: "info_window", locals: {restroom: restroom}),
-      marker_html: render_to_string(partial: "marker", locals: { restroomLngLat: [restroom.longitude, restroom.latitude] })
+      marker_html: render_to_string(partial: "marker", locals: { restroomLngLat: [restroom.longitude, restroom.latitude], restroom_id: restroom.id })
     }
     end
   end
@@ -21,6 +21,11 @@ class RestroomsController < ApplicationController
     @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
     # @review = Review.new(user: current_user, restroom: @restroom)
     @review = Review.new
+    
+    respond_to do |format|
+      format.html
+      format.text { render partial: "restrooms/show_partial", formats: [:html], locals: { restroom: @restroom } } # send back a different type of response, triggered from a javascript request
+    end
   end
 
 
