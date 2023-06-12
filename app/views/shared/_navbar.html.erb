@@ -6,7 +6,7 @@
     <%= link_to "Restroomie", '/restrooms', class: "navbar-brand" %>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <% if user_signed_in? %>
-      <span><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %></span>
+      <span><%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5PBZb-XoLEtM5gEaG2L7VIHxeO_QSY0Gxoxk7Xhel_9Y64zKqNt6aYoh663M-xNg9uA8&usqp=CAU", class: "avatar", alt: "dropdown menu" %></span>
     <% else %>
       <span class="navbar-toggler-icon"></span>
     <% end %>
@@ -17,7 +17,7 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              
+
             </a>
             <div class="dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", '/dashboard', class: "dropdown-item" %>
@@ -33,5 +33,3 @@
     </div>
   </div>
 </div>
-
-
