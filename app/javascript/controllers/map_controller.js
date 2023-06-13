@@ -94,7 +94,9 @@ export default class extends Controller {
 
 
   navigation() {
-    this.#getRoute(event.target.dataset.restroomlnglat)
+  
+    this.#getRoute(event.target.dataset.coordinates)
+    // this.#getRoute(event.target.dataset.restroomlnglat)
   }
   // changed vnus to restrooms
   async #getRoute(restroomlatlng) {
