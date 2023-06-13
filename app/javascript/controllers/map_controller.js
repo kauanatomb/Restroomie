@@ -43,7 +43,8 @@ export default class extends Controller {
           enableHighAccuracy: true
         },
         trackUserLocation: true,
-        showUserHeading: true
+        showUserHeading: true,
+        fitBoundsOptions: {maxZoom:14}
         })
       );
     }
@@ -94,7 +95,7 @@ export default class extends Controller {
 
 
   navigation() {
-  
+
     this.#getRoute(event.target.dataset.coordinates)
     // this.#getRoute(event.target.dataset.restroomlnglat)
   }
