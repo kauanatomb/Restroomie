@@ -7,4 +7,6 @@ class Restroom < ApplicationRecord
   has_many_attached :photos
   has_one_attached :photo
   validates :name, :address, presence: true
+  attribute :hygiene_products, :string
+  attribute :cleanliness, :integer
 end
