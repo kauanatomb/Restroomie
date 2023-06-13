@@ -14,3 +14,13 @@
 .navbar-toggler:focus {
   color: transparent !important
 }
+
+.width-righteous{
+  width: inherit;
+}
+
+.flex-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
