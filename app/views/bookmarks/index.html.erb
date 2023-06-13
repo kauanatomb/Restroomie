@@ -1,0 +1,64 @@
+<div class="container">
+  <h1>Welcome to your Bookmarks, <%= current_user.username %>!</h1>
+  <hr>
+  <div>
+        <% if @bookmarks.empty? %>
+          <p>No bookmarks created.</p>
+        <% else %>
+            <% @bookmarks.each do |bookmark| %>
+            <%= link_to restroom_path(bookmark.restroom), class: "bookmark-button" do %>
+            <div class="card-body bg-transparent">
+              <div class="mb-4 restroom-card" style="max-height: 150px;">
+                <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
+                <div class="d-flex" style="max-height: 150px;">
+                  <div class="col-md-4">
+                    <% if bookmark.photo.attached? %>
+                    <%= cl_image_tag bookmark.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
+                  <% elsif bookmark.photos.present? %>
+                    <%= cl_image_tag bookmark.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
+                  <% else %>
+                    <p>No Image Available</p>
+                  <% end %>
+                  </div>
+                  <div class="card-body m-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="card-title"><%=  bookmark.name  %></h5>
+                      <% if bookmark.approved %>
+                        <i class="fa-solid fa-circle-check"></i>
+                      <% end %>
+                    </div>
+                    <% if bookmark.reviews.present? %>
+                      <% average_rating = bookmark.reviews.pluck(:rating).sum/bookmark.reviews.count.to_f %>
+                      <% average_rating.round.times do %>
+                        <i class="fa-solid fa-star"></i>
+                      <% end %>
+                    <% else %>
+                      <p class="card-text">No reviews available.</p>
+                    <% end %>
+                    <p class="card-text">
+                      <% if bookmark.pricing %>
+                        <i class="fas fa-euro"></i> <%= bookmark.pricing %>
+                      <% else %>
+                        <div class="d-flex align-items-center">
+                          <i class="fas fa-euro"></i>
+                          <p class="ml-2 mb-0">Free</p>
+                        </div>
+                      <% end %></p>
+                    <% if bookmark.accessibility && bookmark.baby_friendly %>
+                      <div class="d-flex">
+                        <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p><p class="card-text"><i class="fa-solid fa-baby"></i></p>
+                      </div>
+                    <% elsif bookmark.accessibility %>
+                      <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
+                    <% elsif bookmark.baby_friendly %>
+                      <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
