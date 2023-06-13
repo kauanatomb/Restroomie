@@ -1,45 +1,57 @@
 <div class="dashboard-header">
-<h1>Welcome to Your dashbaord, <%= current_user.username %>!</h1>
+<h1>Welcome to Your dashbaord<%= current_user.username %>!</h1>
 </div>
 
 <hr>
 
-<%# added the entire card clickable %>
 <div>
   <h2>Your bookmarks:</h2>
-  <ul class="container-fluid">
-    <% if @bookmarks.empty? %>
-      <p>No bookmarks created.</p>
-    <% else %>
-      <% @bookmarks.each do |bookmark| %>
-        <%= link_to restroom_path(bookmark) do %>
+    <ul class="container-fluid">
+      <% if @bookmarks.empty? %>
+        <p>No bookmarks created.</p>
+      <% else %>
+          <% @bookmarks.each do |bookmark| %>
           <div class="card-body">
             <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
-            <%= bookmark.name %>
+            <%= link_to bookmark.name, restroom_path(bookmark) %>
+          </div>
+          <% end %>
+      <% end %>
+    </ul>
+</div>
+
+<hr>
+
+<div>
+  <h2>Your restrooms:</h2>
+  <ul class="container-fluid">
+    <% if @restrooms.empty? %>
+      <p>No restrooms created.</p>
+    <% else %>
+      <% @restrooms.each do |restroom| %>
+        <%= link_to restroom_path(restroom) do %>
+          <div class="card-body">
+            <% restroom = Restroom.find_by(user_id: @user.id) %>
+            <h3><%= restroom.name %></h3>
+            <% if restroom.photo.attached? %>
+              <div style="display: flex; align-items: center;">
+                <%= image_tag url_for(restroom.photo), alt: 'Restroom photo', style: 'width: 100px; height: 100px;' %>
+                <% if restroom.accessibility %>
+                  <p style="margin-top: 20px; margin-left: 10px;">Accessible</p>
+                <% end %>
+              </div>
+              <p style=" margin-left: 120px;">Price: <%= restroom.pricing %></p>
+            <% else %>
+              <p>No photo available</p>
+            <% end %>
+            <% restroom.reviews.each do |review| %>
+            <% end %>
           </div>
         <% end %>
       <% end %>
     <% end %>
   </ul>
 </div>
-
-<hr>
-
-  <div>
-   <h2>Your restrooms:</h2>
-    <ul class="container-fluid">
-      <% if @restrooms.empty? %>
-        <p>No restrooms created.</p>
-      <% else %>
-        <% @restrooms.each do |restroom| %>
-        <div class="card-body">
-          <% restroom = Restroom.find_by(user_id: @user.id) %>
-          <%= link_to restroom.name, restroom_path(restroom) %>
-        </div>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
 
 <hr>
 
@@ -50,13 +62,22 @@
       <p>No reviews created.</p>
     <% else %>
       <% @reviews.each do |review| %>
-      <div class="card-body">
         <% restroom = Restroom.find_by(id: review.restroom_id) %>
-        <li>
-          <%= link_to "#{review.comment} - #{restroom.name}", restroom_path(restroom) %>
-        </li>
-      </div>
+        <%= link_to restroom_path(restroom) do %>
+          <div class="card-body" style="display: flex; align-items: center;">
+            <% if restroom.photo.attached? %>
+              <%= image_tag url_for(restroom.photo), alt: 'Restroom photo', style: 'width: 100px; height: 100px; margin-right: 10px;' %>
+            <% else %>
+              <p>No photo available</p>
+            <% end %>
+            <li>
+              <span style="margin-right: 10px;"><%= review.comment %></span>
+              <span><%= restroom.name %></span>
+            </li>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
 </div>
+
