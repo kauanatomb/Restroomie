@@ -1,74 +1,9 @@
-<div style="width: 100%; height: 695px;"
+<div style="width: 100%; height: 100%;"
   data-controller="map slide"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
   <div class="partial-container" style="position: absolute; bottom: 100px; z-index: 1000; width: 100%" data-slide-target="partialContainer">
-  </div>
-</div>
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary custom-navbar" style= "height: 80px">
-  <div class="container">
-    </div>
-  </div>
-</nav>
-<br>
-<div class="container-fluid">
-  <div class="row">
-    <% @restrooms.each do |restroom| %>
-      <div class="col-12 mt-3">
-        <div class="mb-4 restroom-card" style="max-height: 150px;">
-          <%= link_to restroom, class: "bookmark-button no-hover" do %>
-            <div class="d-flex" style="max-height: 150px;">
-              <div class="col-md-4">
-                <% if restroom.photo.attached? %>
-                  <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
-                <% elsif restroom.photos.present? %>
-                  <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
-                <% else %>
-                  <p>No Image Available</p>
-                <% end %>
-              </div>
-                <div class="card-body m-0">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="card-title"><%=  restroom.name  %></h5>
-                    <% if restroom.approved %>
-                      <i class="fa-solid fa-circle-check"></i>
-                    <% end %>
-                  </div>
-                  <% if restroom.reviews.present? %>
-                    <% average_rating = restroom.reviews.pluck(:rating).sum/restroom.reviews.count.to_f %>
-                    <% average_rating.round.times do %>
-                      <i class="fa-solid fa-star"></i>
-                    <% end %>
-                  <% else %>
-                    <p class="card-text">No reviews available.</p>
-                  <% end %>
-                  <p class="card-text">
-                    <% if restroom.pricing %>
-                      <i class="fas fa-euro"></i> <%= restroom.pricing %>
-                    <% else %>
-                      <div class="d-flex align-items-center">
-                        <i class="fas fa-euro"></i>
-                        <p class="ml-2 mb-0">Free</p>
-                      </div>
-                    <% end %></p>
-                  <% if restroom.accessibility && restroom.baby_friendly %>
-                    <div class="d-flex">
-                      <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p><p class="card-text"><i class="fa-solid fa-baby"></i></p>
-                    </div>
-                  <% elsif restroom.accessibility %>
-                    <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
-                  <% elsif restroom.baby_friendly %>
-                    <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
-                  <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
   </div>
 </div>
 
