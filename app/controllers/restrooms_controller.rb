@@ -21,7 +21,7 @@ class RestroomsController < ApplicationController
     @bookmark = Bookmark.find_by(user: current_user, restroom: @restroom)
     # @review = Review.new(user: current_user, restroom: @restroom)
     @review = Review.new
-    
+
     respond_to do |format|
       format.html
       format.text { render partial: "restrooms/show_partial", formats: [:html], locals: { restroom: @restroom } } # send back a different type of response, triggered from a javascript request
