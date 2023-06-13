@@ -39,11 +39,11 @@ export default class extends Controller {
       this.#fitMapToMarkers();
       this.map.addControl(
         new mapboxgl.GeolocateControl({
-        positionOptions: {
-          enableHighAccuracy: true
-        },
-        trackUserLocation: true,
-        showUserHeading: true
+          positionOptions: {
+            enableHighAccuracy: true
+          },
+          trackUserLocation: true,
+          showUserHeading: true
         })
       );
     }
@@ -80,7 +80,7 @@ export default class extends Controller {
       customMarker.innerHTML = marker.marker_html
 
       new mapboxgl.Marker(customMarker)
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat([marker.lng, marker.lat])
         // .setPopup(popup)
         .addTo(this.map)
     });
@@ -88,14 +88,13 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
 
-  navigation() {
-  
-    this.#getRoute(event.target.dataset.coordinates)
+  navigation(event) {
+    this.#getRoute(event.currentTarget.dataset.coordinates)
     // this.#getRoute(event.target.dataset.restroomlnglat)
   }
   // changed vnus to restrooms
@@ -110,7 +109,7 @@ export default class extends Controller {
       const query = await fetch(
         `https://api.mapbox.com/directions/v5/mapbox/walking/${addresses}?steps=true&geometries=geojson&access_token=pk.eyJ1IjoicHRyY2ticmQiLCJhIjoiY2xpbXl3aWo3MHA5YjNqcGN1YjIxYnh2NiJ9.sgf0kRucW61e1gvLaFvp1w`,
         { method: 'GET' }
-        );
+      );
 
       const json = await query.json();
       if (json.routes) {
