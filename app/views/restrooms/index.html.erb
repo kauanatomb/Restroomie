@@ -1,8 +1,13 @@
 <div style="width: 100%; height: 695px;"
-  data-controller="map"
+  data-controller="map slide"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
+  <div class="partial-container" style="position: absolute; bottom: 100px; z-index: 1000; width: 100%" data-slide-target="partialContainer">
+  </div>
 </div>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-secondary custom-navbar" style= "height: 80px">
   <div class="container">
     </div>
@@ -72,9 +77,3 @@
     <i class="fas fa-plus"></i>
   <% end %>
 </div>
-
-
-
-
-
-
