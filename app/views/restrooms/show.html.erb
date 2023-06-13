@@ -1,7 +1,7 @@
 <div class="container justify-content-center">
   <div class="restroom-card">
     <div class="image-card">
-      
+
       <% if @restroom.photo.attached? %>
         <%= cl_image_tag @restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
       <% elsif @restroom.photos.present? %>
@@ -28,10 +28,12 @@
         <% if @restroom.pricing %>
           <i class="fas fa-euro"></i> <%= @restroom.pricing %>
         <% else %>
-          <div class="d-flex">
+          <div class="d-flex align-items-center">
             <i class="fas fa-euro"></i>
-            <p class="ml-2 mb-0">Free</p>
+            <p class="mb-0 ms-2">Free</p>
           </div>
+
+
         <% end %></p>
           <% if @restroom.accessibility %>
             <p class="card-text"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
@@ -57,7 +59,7 @@
         <% end %>
       </h2>
     </div>
-    
+
     <hr>
 
     <div class="review-section">
@@ -82,7 +84,7 @@
       </div>
     </div>
 
-  
+
     <hr>
 
     <div class="card-body">

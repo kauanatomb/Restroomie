@@ -1,26 +1,67 @@
-<div class="dashboard-header">
-<h1>Welcome to Your dashbaord<%= current_user.username %>!</h1>
-</div>
+<div class="container">
+  <h1>Welcome to your Dashboard <%= current_user.username %>!</h1>
+  <hr>
+  <div>
+    <h2>Your bookmarks:</h2>
+        <% if @bookmarks.empty? %>
+          <p>No bookmarks created.</p>
+        <% else %>
+            <% @bookmarks.each do |bookmark| %>
+            <%= link_to restroom_path(bookmark.restroom), class: "bookmark-button" do %>
+              <div class="mb-4 restroom-card" style="max-height: 150px;">
+                <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
+                <div class="d-flex" style="max-height: 150px;">
+                  <div class="col-md-4">
+                    <% if bookmark.photo.attached? %>
+                    <%= cl_image_tag bookmark.photo.key, class: 'card-img-top', height: 160, width: 160, crop: :fill %>
+                  <% elsif bookmark.photos.present? %>
+                    <%= cl_image_tag bookmark.photos.first.key, class: "img-square-wrapper", height: 160, width: 160, crop: :fill %>
+                  <% else %>
+                    <p>No Image Available</p>
+                  <% end %>
+                  </div>
+                  <div class="card-body m-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="card-title"><%=  bookmark.name  %></h5>
+                      <% if bookmark.approved %>
+                        <i class="fa-solid fa-circle-check"></i>
+                      <% end %>
+                    </div>
+                    <% if bookmark.reviews.present? %>
+                      <% average_rating = bookmark.reviews.pluck(:rating).sum/bookmark.reviews.count.to_f %>
+                      <% average_rating.round.times do %>
+                        <i class="fa-solid fa-star"></i>
+                      <% end %>
+                    <% else %>
+                      <p class="card-text">No reviews available.</p>
+                    <% end %>
+                    <p class="card-text">
+                      <% if bookmark.pricing %>
+                        <i class="fas fa-euro"></i> <%= bookmark.pricing %>
+                      <% else %>
+                        <div class="d-flex align-items-center">
+                          <i class="fas fa-euro"></i>
+                          <p class="ml-2 mb-0">Free</p>
+                        </div>
+                      <% end %></p>
+                    <% if bookmark.accessibility && bookmark.baby_friendly %>
+                      <div class="d-flex">
+                        <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p><p class="card-text"><i class="fa-solid fa-baby"></i></p>
+                      </div>
+                    <% elsif bookmark.accessibility %>
+                      <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
+                    <% elsif bookmark.baby_friendly %>
+                      <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+        <% end %>
+  </div>
 
-<hr>
-
-<div>
-  <h2>Your bookmarks:</h2>
-    <ul class="container-fluid">
-      <% if @bookmarks.empty? %>
-        <p>No bookmarks created.</p>
-      <% else %>
-          <% @bookmarks.each do |bookmark| %>
-          <div class="card-body">
-            <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
-            <%= link_to bookmark.name, restroom_path(bookmark) %>
-          </div>
-          <% end %>
-      <% end %>
-    </ul>
-</div>
-
-<hr>
+  <hr>
 
 <div>
   <h2>Your restrooms:</h2>
@@ -29,23 +70,56 @@
       <p>No restrooms created.</p>
     <% else %>
       <% @restrooms.each do |restroom| %>
-        <%= link_to restroom_path(restroom) do %>
-          <div class="card-body">
-            <% restroom = Restroom.find_by(user_id: @user.id) %>
-            <h3><%= restroom.name %></h3>
-            <% if restroom.photo.attached? %>
-              <div style="display: flex; align-items: center;">
-                <%= image_tag url_for(restroom.photo), alt: 'Restroom photo', style: 'width: 100px; height: 100px;' %>
-                <% if restroom.accessibility %>
-                  <p style="margin-top: 20px; margin-left: 10px;">Accessible</p>
+        <%= link_to restroom_path(restroom), class: "bookmark-button" do %>
+          <div class="mb-4 restroom-card" style="max-height: 150px;">
+            <% restroom = Restroom.find_by(id: restroom.id) %>
+            <div class="d-flex" style="max-height: 150px;">
+              <div class="col-md-4">
+                <% if restroom.photo.attached? %>
+                  <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 160, width: 160, crop: :fill %>
+                <% elsif restroom.photos.present? %>
+                  <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 160, width: 160, crop: :fill %>
+                <% else %>
+                  <p>No Image Available</p>
                 <% end %>
               </div>
-              <p style=" margin-left: 120px;">Price: <%= restroom.pricing %></p>
-            <% else %>
-              <p>No photo available</p>
-            <% end %>
-            <% restroom.reviews.each do |review| %>
-            <% end %>
+              <div class="card-body m-0" style="height: 150px;">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="card-title"><%= restroom.name %></h5>
+                      <% if restroom.approved %>
+                        <i class="fa-solid fa-circle-check"></i>
+                      <% end %>
+                </div>
+                <% if restroom.reviews.present? %>
+                  <% average_rating = restroom.reviews.pluck(:rating).sum / restroom.reviews.count.to_f %>
+                  <% average_rating.round.times do %>
+                    <i class="fa-solid fa-star"></i>
+                  <% end %>
+                <% else %>
+                  <p class="card-text">No reviews available.</p>
+                <% end %>
+                <p class="card-text">
+                  <% if restroom.pricing %>
+                    <i class="fas fa-euro"></i> <%= restroom.pricing %>
+                  <% else %>
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-euro"></i>
+                      <p class="ml-2 mb-0">Free</p>
+                    </div>
+                  <% end %>
+                </p>
+                <% if restroom.accessibility && restroom.baby_friendly %>
+                  <div class="d-flex">
+                    <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p>
+                    <p class="card-text"><i class="fa-solid fa-baby"></i></p>
+                  </div>
+                <% elsif restroom.accessibility %>
+                  <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
+                <% elsif restroom.baby_friendly %>
+                  <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
+                <% end %>
+              </div>
+            </div>
           </div>
         <% end %>
       <% end %>
@@ -64,20 +138,26 @@
       <% @reviews.each do |review| %>
         <% restroom = Restroom.find_by(id: review.restroom_id) %>
         <%= link_to restroom_path(restroom) do %>
-          <div class="card-body" style="display: flex; align-items: center;">
+          <div class="card-body" style="display: flex; align-items: center; height: 190px; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);">
             <% if restroom.photo.attached? %>
-              <%= image_tag url_for(restroom.photo), alt: 'Restroom photo', style: 'width: 100px; height: 100px; margin-right: 10px;' %>
+              <%= image_tag url_for(restroom.photo), alt: 'Restroom photo', style: 'width: 110px; height: 160px; margin-right: 10px; shadow: ' %>
             <% else %>
               <p>No photo available</p>
             <% end %>
-            <li>
-              <span style="margin-right: 10px;"><%= review.comment %></span>
-              <span><%= restroom.name %></span>
-            </li>
+            <div style="flex: 1; min-width: 0;">
+              <h5 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 5px;"><%= restroom.name %></h5>
+              <% if review.rating.present? %>
+                <% review.rating.times do %>
+                  <i class="fa-solid fa-star"></i>
+                <% end %>
+              <% else %>
+                <p>No rating available</p>
+              <% end %>
+              <p style="overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; margin-bottom: 0;"><%= review.comment %></p>
+            </div>
           </div>
         <% end %>
       <% end %>
     <% end %>
   </ul>
 </div>
-
