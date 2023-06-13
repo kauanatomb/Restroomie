@@ -5,9 +5,9 @@
         <% if @bookmarks.empty? %>
           <p>No bookmarks created.</p>
         <% else %>
+        <br>
             <% @bookmarks.each do |bookmark| %>
             <%= link_to restroom_path(bookmark.restroom), class: "bookmark-button" do %>
-            <div class="card-body bg-transparent">
               <div class="mb-4 restroom-card" style="max-height: 150px;">
                 <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
                 <div class="d-flex" style="max-height: 150px;">
