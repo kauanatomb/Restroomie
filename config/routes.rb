@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :reviews, only: :destroy
 
   get '/dashboard', to: 'dashboard#index'
+  get '/bookmarks', to: 'bookmarks#index'
 end

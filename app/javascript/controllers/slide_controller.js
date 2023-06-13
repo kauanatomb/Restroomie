@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["partialContainer", "routeButton"]
 
   replace(event) {
-    this.coordinates = event.target.dataset.restroomlnglat
     fetch(event.currentTarget.dataset.url, {
       method: 'GET',
       headers: { 'Accept': 'text/plain' }
@@ -13,7 +12,6 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         this.partialContainerTarget.innerHTML = data
-        this.routeButtonTarget.dataset.coordinates = this.coordinates
       })
   }
 
