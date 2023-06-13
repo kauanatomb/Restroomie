@@ -1,9 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag 'pointer (blue).png', alt: 'pointer' %>
+      <%= image_tag 'pointer (transparent).png', alt: 'pointer transparent' %>
     <% end %>
-    <%= link_to "Restroomie", '/restrooms', class: "navbar-brand" %>
+    <%= link_to "Restroomie", '/restrooms', class: "navbar-brand custom-font custom-link" %>
+     <%#= link_to "Restroomie", '/restrooms', class: "navbar-brand border border-dark p-2 rounded-pill ms-3" %>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <% if user_signed_in? %>
       <span><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %></span>
@@ -17,7 +18,7 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              
+
             </a>
             <div class="dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", '/dashboard', class: "dropdown-item" %>
@@ -33,5 +34,3 @@
     </div>
   </div>
 </div>
-
-
