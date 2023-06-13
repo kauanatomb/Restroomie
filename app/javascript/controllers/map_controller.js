@@ -39,6 +39,7 @@ export default class extends Controller {
       this.#fitMapToMarkers();
       this.map.addControl(
         new mapboxgl.GeolocateControl({
+
           positionOptions: {
             enableHighAccuracy: true
           },
@@ -95,6 +96,7 @@ export default class extends Controller {
 
   navigation(event) {
     this.#getRoute(event.currentTarget.dataset.coordinates)
+
     // this.#getRoute(event.target.dataset.restroomlnglat)
   }
   // changed vnus to restrooms
