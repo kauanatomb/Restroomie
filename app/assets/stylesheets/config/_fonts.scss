@@ -1,8 +1,14 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
+
+
+
+
 
 // Define fonts for body and headers
-$body-font: "Poppins", "sans-serif";
+$body-font: 'Syne Mono', monospace, "Poppins", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
