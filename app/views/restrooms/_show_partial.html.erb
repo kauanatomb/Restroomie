@@ -40,8 +40,11 @@
                     <% end %></p>
                     <div>
                       <% if restroom.accessibility && restroom.baby_friendly %>
-                        <div class="d-flex ">
-                          <p class="card-text ml-5"><i class="fa-solid fa-wheelchair"></i></p><p class="card-text"><i class="fa-solid fa-baby"></i></p>
+                        <div class="d-flex">
+                          <div>
+                            <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p>
+                          </div>
+                          <p class="card-text"><i class="fa-solid fa-baby"></i></p>
                         </div>
                       <% elsif restroom.accessibility %>
                         <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
