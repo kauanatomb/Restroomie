@@ -17,6 +17,7 @@
                   <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 160, width: 160, crop: :fill %>
                 <% elsif restroom.photos.present? %>
                   <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 160, width: 160, crop: :fill %>
+
                 <% else %>
                   <p>No Image Available</p>
                 <% end %>
@@ -24,9 +25,6 @@
               <div class="card-body m-0" style="height: 150px;">
                 <div class="d-flex justify-content-between align-items-center">
                   <h5 class="card-title"><%= restroom.name %></h5>
-                      <% if restroom.approved %>
-                        <i class="fa-solid fa-circle-check"></i>
-                      <% end %>
                 </div>
                 <% if restroom.reviews.present? %>
                   <% average_rating = restroom.reviews.pluck(:rating).sum / restroom.reviews.count.to_f %>
