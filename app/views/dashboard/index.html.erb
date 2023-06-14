@@ -1,8 +1,7 @@
 <div class="container">
-  <h1>Welcome to your Dashboard <%= current_user.username %>!</h1>
+  <h1>Welcome to your Dashboard<%= current_user.username %>!</h1>
   <hr>
   <div>
-    <div>
   <h2>Your restrooms:</h2>
   <ul class="container-fluid">
     <% if @restrooms.empty? %>
@@ -15,9 +14,10 @@
             <div class="d-flex" style="max-height: 150px;">
               <div class="col-md-4">
                 <% if restroom.photo.attached? %>
-                  <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
+                  <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 160, width: 160, crop: :fill %>
                 <% elsif restroom.photos.present? %>
-                  <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
+                  <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 160, width: 160, crop: :fill %>
+
                 <% else %>
                   <p>No Image Available</p>
                 <% end %>
@@ -72,7 +72,7 @@
       <% @reviews.each do |review| %>
         <% restroom = Restroom.find_by(id: review.restroom_id) %>
         <%= link_to restroom_path(restroom) do %>
-          <div class="card-body" style="display: flex; align-items: center; height: 190px; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);">
+          <div class="card-body" style="display: flex; align-items: center; height: 160px; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);">
             <% if restroom.photo.attached? %>
               <%= image_tag url_for(restroom.photo), alt: 'Restroom photo', style: 'width: 110px; height: 160px; margin-right: 10px; shadow: ' %>
             <% else %>
@@ -87,7 +87,7 @@
               <% else %>
                 <p>No rating available</p>
               <% end %>
-              <p style="overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; margin-bottom: 0;"><%= review.comment %></p>
+              <p style="overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; margin-bottom: 0; font-size: 13px;"><%= review.comment %></p>
             </div>
           </div>
         <% end %>
@@ -95,10 +95,3 @@
     <% end %>
   </ul>
 </div>
-
-
-
-
-
-
-
