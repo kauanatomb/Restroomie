@@ -1,0 +1,16 @@
+<div class="container mapboxgl-map">
+  <h1 class="header">Welcome to your Reviews, <%= current_user.username %>!</h1>
+  <hr>
+  <div>
+  <h2 class="header">Your reviews:</h2>
+  <div>
+    <ul class="container-fluid mapboxgl-map">
+      <% if @reviews.empty? %>
+        <p>No reviews created.</p>
+      <% else %>
+        <% @reviews.each do |review| %>
+          <%= render "review_card", review: review %>
+        <% end %>
+      <% end %>
+  </div>
+</div>

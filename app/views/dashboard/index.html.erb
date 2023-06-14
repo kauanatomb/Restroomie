@@ -14,9 +14,9 @@
             <div class="d-flex" style="max-height: 150px;">
               <div class="col-md-4">
                 <% if restroom.photo.attached? %>
-                  <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 160, width: 160, crop: :fill %>
+                  <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
                 <% elsif restroom.photos.present? %>
-                  <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 160, width: 160, crop: :fill %>
+                  <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
 
                 <% else %>
                   <p>No Image Available</p>
@@ -44,16 +44,29 @@
                     </div>
                   <% end %>
                 </p>
-                <% if restroom.accessibility && restroom.baby_friendly %>
-                  <div class="d-flex">
-                    <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p>
-                    <p class="card-text"><i class="fa-solid fa-baby"></i></p>
-                  </div>
-                <% elsif restroom.accessibility %>
-                  <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
-                <% elsif restroom.baby_friendly %>
-                  <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
-                <% end %>
+                <div>
+                      <% if restroom.accessibility && restroom.baby_friendly %>
+                        <div class="d-flex justify-content-between">
+                          <div class="align-items-center d-flex">
+                            <p class="card-text">
+                            <%= image_tag 'disabled.png', alt: 'wheelchair Icon', height:25, width:25 %>
+                            </p>
+                            <div>
+                              <p class="card-text">
+                                <%= image_tag 'baby.png', alt: 'Baby Icon', height:25, width:25 %>
+                              </p>
+                            </div>
+                          </div>
+                      <% elsif restroom.accessibility %>
+                        <p class="card-text">
+                            <%= image_tag 'disabled.png', alt: 'wheelchair Icon', height:25, width:25 %>
+                        </p>
+                      <% elsif restroom.baby_friendly %>
+                        <p class="card-text">
+                              <%= image_tag 'baby.png', alt: 'Baby Icon', height:25, width:25 %>
+                        </p>
+                      <% end %>
+                    </div>
               </div>
             </div>
           </div>
@@ -62,14 +75,3 @@
     <% end %>
 </div>
 <hr>
-<div>
-  <h2 class="header">Your reviews:</h2>
-  <ul class="container-fluid mapboxgl-map">
-    <% if @reviews.empty? %>
-      <p>No reviews created.</p>
-    <% else %>
-      <% @reviews.each do |review| %>
-        <%= render "review_card", review: review %>
-      <% end %>
-    <% end %>
-</div>

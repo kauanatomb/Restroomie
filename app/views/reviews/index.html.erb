@@ -1,12 +1,19 @@
+
 <div class="container mapboxgl-map">
+    <h2 class="header">See all reviews:</h2>
     <% @reviews.each do |review| %>
-        <div>
-            <% review.rating.times do %>
-                <i class="fas fa-star star-yellow"></i>
-            <% end %>
-            <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-            <p class="mb-0"><%= review.comment %></p>
+        <div class="card m-3 restroom-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <div class="mb-2">
+                    <% review.rating.times do %>
+                        <i class="fas fa-star star-yellow"></i>
+                    <% end %>
+                  </div>
+                    <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+                </div>
+                <p class="mb-0"><%= review.comment %></p>
+            </div>
         </div>
-        <hr>
     <% end %>
 </div>

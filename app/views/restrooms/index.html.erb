@@ -9,8 +9,10 @@
 </div>
 
 <div style="position: fixed; left: 50%; transform: translateX(-50%); bottom: 20px;">
-  <%= link_to new_restroom_path, class: "btn rounded-circle", style: "background-color: #85C0EA; color: black; border: 1.5px solid black;" do %>
-    <i class="fas fa-plus"></i>
+  <%= link_to new_restroom_path do %>
+    <%= image_tag 'plus.png', alt: 'Plus Icon', height:50, width:50 %>
   <% end %>
 </div>
 
+<%# button style %>
+<%# class: "btn rounded-circle", style: "background-color: #85C0EA; color: black; border: 1.5px solid black;" %>
