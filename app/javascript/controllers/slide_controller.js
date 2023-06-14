@@ -2,29 +2,25 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="slide"
 export default class extends Controller {
-  static targets = ["partialContainer", "routeButton"]
+  static targets = ["partialDiv", "slidingDiv"]
 
-  replace(event) {
-    fetch(event.currentTarget.dataset.url, {
-      method: 'GET',
-      headers: { 'Accept': 'text/plain' }
-    })
-      .then(response => response.text())
-      .then((data) => {
-        this.partialContainerTarget.innerHTML = data
-      })
+  connect() {
+
   }
-
 
   slideUp() {
     // Animation code goes here
-    this.showTarget.classList.remove("d-none")
-    this.showTarget.classList.add("animate__animated", "animate__slideInUp")
+    this.partialDivTarget.classList.add("d-none")
+    this.slidingDivTarget.classList.remove("d-none")
+    this.slidingDivTarget.classList.remove("animate__animated", "animate__slideOutDown")
+    this.slidingDivTarget.classList.add("animate__animated", "animate__slideInUp")
   }
 
   slideOutDown() {
-    this.showTarget.classList.add("d-none")
-    this.showTarget.classList.add("animate__animated", "animate__slideOutDown")
+    this.slidingDivTarget.classList.add("animate__animated", "animate__slideOutDown")
+    setInterval(() => {
+      this.slidingDivTarget.classList.add("d-none")
+    }, 1000)
+    this.partialDivTarget.classList.remove("d-none")
   }
-
 }
