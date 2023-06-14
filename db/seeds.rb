@@ -288,47 +288,6 @@ Restroom.create!(
   approved: true
 )
 
-restroom = Restroom.find_by(name: "Gendarmenmarkt")
-
-if restroom.nil?
-  restroom = Restroom.create!(
-    name: "Gendarmenmarkt",
-    address: "Gendarmenmarkt, 10117 Berlin",
-    accessibility: true,
-    # hygiene_products: true,
-    baby_friendly: true,
-    pricing: 3.00,
-    # cleanliness: true,
-    longitude: 13.3928,
-    latitude: 52.5139,
-    user_id: User.first.id,
-    approved: true
-  )
-end
-
-restroom.reviews.destroy_all
-
-Review.create!(
-  rating: 5,
-  comment: "This restroom is fantastic! It's clean, spacious, and well-maintained. I highly recommend it!",
-  user_id: User.second.id,
-  restroom_id: restroom.id
-)
-
-Review.create!(
-  rating: 5,
-  comment: "I've been to many restrooms in Berlin, but this one stands out as the best. It's incredibly clean and well-equipped.",
-  user_id: User.third.id,
-  restroom_id: restroom.id
-)
-
-Review.create!(
-  rating: 5,
-  comment: "I've been to many restrooms, but this one stands out as the best. It's incredibly clean and well-equipped.",
-  user_id: User.third.id,
-  restroom_id: restroom.id
-)
-
 Restroom.all.each do |restroom|
   1.times do
     random_file = URI.open(Faker::LoremFlickr.image(size: "300x250", search_terms: ['restroom']))
