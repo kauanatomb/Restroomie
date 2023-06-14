@@ -4,7 +4,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 // Connects to data-controller="map"
 export default class extends Controller {
-  static targets = []
+  static targets = ["partialContainer"]
   static values = {
     apiKey: String,
     markers: Array,
@@ -14,7 +14,6 @@ export default class extends Controller {
 
 
   }
-
   connect() {
     this.userCoordinates = []
     mapboxgl.accessToken = this.apiKeyValue
@@ -96,7 +95,7 @@ export default class extends Controller {
 
   navigation(event) {
     this.#getRoute(event.currentTarget.dataset.coordinates)
-
+    this.partialContainerTarget.innerHTML = ""
     // this.#getRoute(event.target.dataset.restroomlnglat)
   }
   // changed vnus to restrooms

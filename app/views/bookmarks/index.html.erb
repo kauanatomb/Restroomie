@@ -1,9 +1,10 @@
-<div class="container">
-  <h1>Welcome to your Bookmarks<%= current_user.username %>!</h1>
+<div class="container mapboxgl-map">
+  <h1>Welcome to your Bookmarks <%= current_user.username %>!</h1>
   <hr>
   <div>
         <% if @bookmarks.empty? %>
-          <p>No bookmarks created.</p>
+        <br>
+          <p class="text-center">No bookmarks created.</p>
         <% else %>
         <br>
             <% @bookmarks.each do |bookmark| %>
