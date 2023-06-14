@@ -161,19 +161,6 @@ Restroom.create!(
   approved: false
 )
 
-Restroom.create!(
-  name: "Checkpoint Charlie",
-  address: "Friedrichstraße 43-45, 10117 Berlin",
-  accessibility: true,
-  # hygiene_products: true,
-  baby_friendly: true,
-  pricing: 2.50,
-  # cleanliness: true,
-  longitude: 13.3903,
-  latitude: 52.5073,
-  user_id: User.second.id,
-  approved: true
-)
 
 Restroom.create!(
   name: "Tiergarten Park",
@@ -301,7 +288,6 @@ Restroom.create!(
   approved: true
 )
 
-
 Restroom.all.each do |restroom|
   1.times do
     random_file = URI.open(Faker::LoremFlickr.image(size: "300x250", search_terms: ['restroom']))
@@ -310,9 +296,10 @@ Restroom.all.each do |restroom|
   end
 
   rand(3..4).times do
+    comment = Faker::Lorem.paragraph[0..39]
     Review.create!(
       rating: rand(1..5),
-      comment: Faker::Lorem.paragraph,
+      comment: comment,
       user_id: User.pluck(:id).sample,
       restroom_id: restroom.id
     )
