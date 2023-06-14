@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, except: [:create, :new, :index]
+  before_action :set_review, except: [:create, :new, :index, :dashboard_reviews]
   before_action :authenticate_user!
 
   def index
@@ -34,6 +34,11 @@ class ReviewsController < ApplicationController
     @review.destroy = current_user
     authorize @restroom 
     redirect_to restroom_path(@restroom)
+  end
+
+  def dashboard_reviews
+    skip_authorization
+    @reviews = current_user.reviews
   end
 
 private

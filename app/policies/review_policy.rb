@@ -5,19 +5,11 @@ class ReviewPolicy < ApplicationPolicy
     end
   end
 
-  def update?
-    true
-  end
-
   def show?
     true
   end
 
   def create?
-    true
-  end
-
-  def bookmark?
     true
   end
 

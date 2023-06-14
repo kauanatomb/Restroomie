@@ -40,22 +40,32 @@
                     <% end %></p>
                     <div>
                       <% if restroom.accessibility && restroom.baby_friendly %>
-                        <div class="d-flex">
-                          <div>
-                            <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p>
+                        <div class="d-flex justify-content-between">
+                          <div class="align-items-center d-flex">
+                            <p class="card-text">
+                            <%= image_tag 'disabled.png', alt: 'wheelchair Icon', height:25, width:25 %>
+                            </p>
+                            <div>
+                              <p class="card-text">
+                                <%= image_tag 'baby.png', alt: 'Baby Icon', height:25, width:25 %>
+                              </p>
+                            </div>
                           </div>
-                          <p class="card-text"><i class="fa-solid fa-baby"></i></p>
-                        </div>
                       <% elsif restroom.accessibility %>
-                        <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
+                        <p class="card-text">
+                            <%= image_tag 'disabled.png', alt: 'wheelchair Icon', height:25, width:25 %>
+                        </p>
                       <% elsif restroom.baby_friendly %>
-                        <p class="card-text"><i class="fa-solid fa-baby"></i> Baby Friendly</p>
+                        <p class="card-text">
+                              <%= image_tag 'baby.png', alt: 'Baby Icon', height:25, width:25 %>
+                        </p>
                       <% end %>
         <% end %>
-                      <div class="text-end">
-                        <h1 class="p-0" data-action="click->map#navigation" data-slide-target="routeButton" data-coordinates="<%= [restroom.longitude, restroom.latitude] %>">
-                        <i class="fa-solid fa-location-arrow"></i>
-                        </h1>
+                          <div class="text-end align-text-center ">
+                            <h1 class="p-0 mt-0" data-action="click->map#navigation" data-slide-target="routeButton" data-coordinates="<%= [restroom.longitude, restroom.latitude] %>">
+                            <i class="fa-solid fa-location-arrow"></i>
+                            </h1>
+                          </div>
                       </div>
                     </div>
                 </div>

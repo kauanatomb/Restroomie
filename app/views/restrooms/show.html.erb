@@ -13,19 +13,19 @@
       <% end %>
     </div>
 
-    <div class="card-body m-0 text-center">
+    <div class="card-body m-0">
       <%# <div class=""> %>
         <h2 class="card-title d-flex justify-content-around">
           <%= @restroom.name%>
           <%= link_to edit_restroom_path(@restroom) do %>
             <i class="fa-regular fa-pen-to-square"></i>
           <% end %>
-          <% if current_user %>
-            <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
-            <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
-              <i class="<%= bookmark_button_class %> fa-bookmark"></i>
-          <% end %>
-          <% end %>
+            <% if current_user %>
+              <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
+              <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
+                <i class="<%= bookmark_button_class %> fa-bookmark"></i>
+            <% end %>
+            <% end %>
         </h2>
         
         <br>
@@ -34,7 +34,7 @@
       <div class="d-flex justify-content-around align-items-center">
         <div class="mr-3">
           <% if @restroom.pricing %>
-            <h3 class="card-text"><i class="fas fa-euro"></i> <%= @restroom.pricing %></h3>
+            <h2 class="card-text"><i class="fas fa-euro"></i> <%= @restroom.pricing %></h2>
           <% else %>
             <div class="d-flex align-items-center">
               <h2 class="card-text"><i class="fas fa-euro"></i></h2>
@@ -44,11 +44,11 @@
         </div>
 
         <% if @restroom.accessibility %>
-          <h2 class="card-text mr-3"><i class="fa-solid fa-wheelchair"></i></h2>
+            <%= image_tag 'disabled.png', alt: 'wheelchair Icon', height:35, width:35 %>
         <% end %>
 
         <% if @restroom.baby_friendly %>
-          <h2 class="card-text mr-3"><i class="fa-solid fa-baby"></i></h2>
+          <%= image_tag 'baby.png', alt: 'Baby Icon', height:35, width:35 %>
         <% end %>
       </div>
 
@@ -69,19 +69,22 @@
         <% else %>
           <% @restroom.reviews.order(created_at: :desc).limit(3).each do |review| %>
             <div class="review-item">
-              <% review.rating.times do %>
-                <i class="fas fa-star star-yellow"></i>
-              <% end %>
-              <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+              <div class="d-flex justify-content-between">
+                <div class="mb-2">
+                  <% review.rating.times do %>
+                    <i class="fas fa-star star-yellow"></i>
+                  <% end %>
+                </div>
+                <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+              </div>
               <p class="card-text mb-0"><%= review.comment %></p>
             </div>
             
           <% end %>
         <% end %>
       </div>
-</div>
+    </div>
     <hr>
-
     <div class="card-body">
       <div>
         <h5>Add your review</h5>

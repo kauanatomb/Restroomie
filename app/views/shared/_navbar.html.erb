@@ -21,8 +21,9 @@
 
             </a>
             <div class="dropdown-menu-end flex-dropdown" aria-labelledby="navbarDropdown">
-              <%= link_to "Dashboard", '/dashboard', class: "dropdown-item width-righteous" %>
+              <%= link_to "My restrooms", '/dashboard', class: "dropdown-item width-righteous" %>
               <%= link_to "Bookmarks", '/bookmarks', class: "dropdown-item width-righteous" %>
+              <%= link_to "Reviews", '/reviews', class: "dropdown-item width-righteous" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item width-righteous" %>
             </div>
           </li>

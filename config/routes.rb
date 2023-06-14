@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,4 +14,5 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'dashboard#index'
   get '/bookmarks', to: 'bookmarks#index'
+  get '/reviews', to: 'reviews#dashboard_reviews'
 end
