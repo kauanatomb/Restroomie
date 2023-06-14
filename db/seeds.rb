@@ -161,19 +161,6 @@ Restroom.create!(
   approved: false
 )
 
-Restroom.create!(
-  name: "Checkpoint Charlie",
-  address: "Friedrichstraße 43-45, 10117 Berlin",
-  accessibility: true,
-  # hygiene_products: true,
-  baby_friendly: true,
-  pricing: 2.50,
-  # cleanliness: true,
-  longitude: 13.3903,
-  latitude: 52.5073,
-  user_id: User.second.id,
-  approved: true
-)
 
 Restroom.create!(
   name: "Tiergarten Park",
@@ -301,6 +288,46 @@ Restroom.create!(
   approved: true
 )
 
+restroom = Restroom.find_by(name: "Gendarmenmarkt")
+
+if restroom.nil?
+  restroom = Restroom.create!(
+    name: "Gendarmenmarkt",
+    address: "Gendarmenmarkt, 10117 Berlin",
+    accessibility: true,
+    # hygiene_products: true,
+    baby_friendly: true,
+    pricing: 3.00,
+    # cleanliness: true,
+    longitude: 13.3928,
+    latitude: 52.5139,
+    user_id: User.first.id,
+    approved: true
+  )
+end
+
+restroom.reviews.destroy_all
+
+Review.create!(
+  rating: 5,
+  comment: "This restroom is fantastic! It's clean, spacious, and well-maintained. I highly recommend it!",
+  user_id: User.second.id,
+  restroom_id: restroom.id
+)
+
+Review.create!(
+  rating: 5,
+  comment: "I've been to many restrooms in Berlin, but this one stands out as the best. It's incredibly clean and well-equipped.",
+  user_id: User.third.id,
+  restroom_id: restroom.id
+)
+
+Review.create!(
+  rating: 5,
+  comment: "I've been to many restrooms, but this one stands out as the best. It's incredibly clean and well-equipped.",
+  user_id: User.third.id,
+  restroom_id: restroom.id
+)
 
 Restroom.all.each do |restroom|
   1.times do
@@ -310,9 +337,10 @@ Restroom.all.each do |restroom|
   end
 
   rand(3..4).times do
+    comment = Faker::Lorem.paragraph[0..39]
     Review.create!(
       rating: rand(1..5),
-      comment: Faker::Lorem.paragraph,
+      comment: comment,
       user_id: User.pluck(:id).sample,
       restroom_id: restroom.id
     )
