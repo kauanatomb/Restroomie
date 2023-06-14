@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
       <div class="col-12 mt-3">
-        <div class="mb-4 restroom-card" style="max-height: 150px;">
+        <div class="mb-4 restroom-card mapboxgl-map" style="max-height: 150px;">
         <%# <div class="text-end">
           <h5><i class="fa-solid fa-circle-xmark"></i></h5>
         </div> %>
@@ -40,8 +40,8 @@
                     <% end %></p>
                     <div>
                       <% if restroom.accessibility && restroom.baby_friendly %>
-                        <div class="d-flex">
-                          <p class="card-text"><i class="fa-solid fa-wheelchair"></i></p><p class="card-text"><i class="fa-solid fa-baby"></i></p>
+                        <div class="d-flex ">
+                          <p class="card-text ml-5"><i class="fa-solid fa-wheelchair"></i></p><p class="card-text"><i class="fa-solid fa-baby"></i></p>
                         </div>
                       <% elsif restroom.accessibility %>
                         <p class="card-text mr-auto"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
@@ -53,10 +53,8 @@
                         <h1 class="p-0" data-action="click->map#navigation" data-slide-target="routeButton" data-coordinates="<%= [restroom.longitude, restroom.latitude] %>">
                         <i class="fa-solid fa-location-arrow"></i>
                         </h1>
-                        
                       </div>
                     </div>
-                  
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 <div class="container justify-content-center">
-  <div class="restroom-card">
+  <div class="restroom-card mapboxgl-map">
     <div class="image-card">
 
       <% if @restroom.photo.attached? %>
@@ -13,16 +13,24 @@
       <% end %>
     </div>
 
-    <div class="card-body">
-      <h2 class="card-title show-flexbox">
-        <%= @restroom.name%>
-        <%= link_to edit_restroom_path(@restroom) do %>
-          <i class="fa-regular fa-pen-to-square"></i>
-        <% end %>
-      </h2>
-      <br>
+    <div class="card-body text-center">
+      <%# <div class=""> %>
+        <h2 class="card-title d-flex justify-content-around">
+          <%= @restroom.name%>
+          <%= link_to edit_restroom_path(@restroom) do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <% if current_user %>
+            <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
+            <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
+              <i class="<%= bookmark_button_class %> fa-bookmark"></i>
+          <% end %>
+          <% end %>
+        </h2>
+        
+        <br>
+      <%# <div> %>
 
-        <%# </div> %>
       <div class="show-flexbox">
         <p class="card-text">
         <% if @restroom.pricing %>
@@ -32,8 +40,6 @@
             <i class="fas fa-euro"></i>
             <p class="mb-0 ms-2">Free</p>
           </div>
-
-
         <% end %></p>
           <% if @restroom.accessibility %>
             <p class="card-text"><i class="fa-solid fa-wheelchair"></i> Accessible</p>
@@ -45,24 +51,9 @@
       <br>
       <p class="card-text">Address: <%= @restroom.address %></p>
       <br>
-      <hr>
     </div>
-    <div class="card-body d-flex justify-content-around">
-      <h2>
-      <%# SHOULD LINK TO THE TOILET ON THE MAP %>
-        <%= link_to icon('fa-solid', 'diamond-turn-right'), restrooms_path %>
-        <% if current_user %>
-          <% bookmark_button_class = @bookmark ? "fa-solid" : "fa-regular" %>
-          <%= link_to restroom_bookmark_path(@restroom), class: "bookmark-button" do %>
-            <i class="<%= bookmark_button_class %> fa-bookmark"></i>
-          <% end %>
-        <% end %>
-      </h2>
-    </div>
-
     <hr>
-
-    <div class="review-section">
+    <div class="review-section mapboxgl-map">
       <div class="card-body">
         <div class="review-flexbox">
         <h3>Reviews</h3>
@@ -88,7 +79,7 @@
     <hr>
 
     <div class="card-body">
-      <div class>
+      <div>
         <h5>Add your review</h5>
         <%= simple_form_for [@restroom, @review] do |f| %>
           <%= f.input :comment, placeholder: "Add your review here..." %>
