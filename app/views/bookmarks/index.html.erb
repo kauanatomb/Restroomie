@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Welcome to your Bookmarks, <%= current_user.username %>!</h1>
+  <h1>Welcome to your Bookmarks<%= current_user.username %>!</h1>
   <hr>
   <div>
         <% if @bookmarks.empty? %>
@@ -13,9 +13,9 @@
                 <div class="d-flex" style="max-height: 150px;">
                   <div class="col-md-4">
                     <% if bookmark.photo.attached? %>
-                    <%= cl_image_tag bookmark.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
+                    <%= cl_image_tag bookmark.photo.key, class: 'card-img-top', height: 160, width: 160, crop: :fill %>
                   <% elsif bookmark.photos.present? %>
-                    <%= cl_image_tag bookmark.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
+                    <%= cl_image_tag bookmark.photos.first.key, class: "img-square-wrapper", height: 160, width: 160, crop: :fill %>
                   <% else %>
                     <p>No Image Available</p>
                   <% end %>
