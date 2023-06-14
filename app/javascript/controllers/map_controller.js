@@ -95,7 +95,7 @@ export default class extends Controller {
 
   navigation(event) {
     this.#getRoute(event.currentTarget.dataset.coordinates)
-    this.partialContainerTarget.innerHTML = ""
+    // this.partialContainerTarget.innerHTML = ""
     // this.#getRoute(event.target.dataset.restroomlnglat)
   }
   // changed vnus to restrooms

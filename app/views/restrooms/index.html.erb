@@ -1,18 +1,20 @@
-<div style="width: 100%; height: 100%;"
-  data-controller="map slide"
+<div style="width: 100%; height: 91vh;"
+  class="relative"
+  data-controller="map replace"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
-  <div class="partial-container" style="position: absolute; bottom: 100px; z-index: 1000; width: 100%" data-slide-target="partialContainer"
+  <div class="partial-container" style="position: absolute; bottom: 2%; z-index: 1000; width: 100%" data-replace-target="partialContainer"
   data-map-target="partialContainer">
+  </div>
+
+  <div style="position: absolute; left: 33px; transform: translateX(-50%); top: 10px; z-index: 1;">
+    <%= link_to new_restroom_path do %>
+      <%= image_tag 'plus.png', alt: 'Plus Icon', height:50, width:50 %>
+    <% end %>
   </div>
 </div>
 
-<div style="position: fixed; left: 50%; transform: translateX(-50%); bottom: 20px;">
-  <%= link_to new_restroom_path do %>
-    <%= image_tag 'plus.png', alt: 'Plus Icon', height:50, width:50 %>
-  <% end %>
-</div>
 
 <%# button style %>
 <%# class: "btn rounded-circle", style: "background-color: #85C0EA; color: black; border: 1.5px solid black;" %>
