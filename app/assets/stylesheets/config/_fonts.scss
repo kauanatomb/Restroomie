@@ -2,11 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 
-
-
-
-
-
 // Define fonts for body and headers
 $body-font: 'Syne Mono', monospace, "Poppins", "sans-serif";
 $headers-font: "Poppins", "sans-serif", "Nunito", "Helvetica", "sans-serif";
@@ -20,3 +15,7 @@ $headers-font: "Poppins", "sans-serif", "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+.header {
+  font-family: 'Syne Mono', monospace, "Poppins", "sans-serif";
+}
