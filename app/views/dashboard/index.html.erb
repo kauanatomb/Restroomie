@@ -1,8 +1,9 @@
 <div class="container mapboxgl-map">
-  <h1>Welcome to your Dashboard <%= current_user.username %>!</h1>
+  <h1 class="header">Welcome to your Dashboard, <%= current_user.username %>!</h1>
   <hr>
   <div>
-  <h2>Your restrooms:</h2>
+  <h2 class="header">Your restrooms:</h2>
+  <ul class="container-fluid">
     <% if @restrooms.empty? %>
       <p>No restrooms created.</p>
     <% else %>
@@ -62,7 +63,8 @@
 </div>
 <hr>
 <div>
-  <h2>Your reviews:</h2>
+  <h2 class="header">Your reviews:</h2>
+  <ul class="container-fluid mapboxgl-map">
     <% if @reviews.empty? %>
       <p>No reviews created.</p>
     <% else %>
