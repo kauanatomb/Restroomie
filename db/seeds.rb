@@ -132,7 +132,7 @@ restroom7 = Restroom.create!(
   approved: true
 )
 
-file7 = URI.open("https://images.unsplash.com/photo-1465257474426-bd133d4db35e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2532&q=80")
+file7 = URI.open("https://forever-clean.s3.amazonaws.com/wp-content/uploads/2020/02/05105019/ForeverClean-PortableToilets2-640x540.jpg")
 restroom7.photos.attach(io: file7, filename: "#{restroom7.name.parameterize}.png", content_type: "image/png")
 
 restroom7.save!
