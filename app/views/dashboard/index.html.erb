@@ -13,9 +13,7 @@
             <% restroom = Restroom.find_by(id: restroom.id) %>
             <div class="d-flex" style="max-height: 150px;">
               <div class="col-md-4">
-                <% if restroom.photo.attached? %>
-                  <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
-                <% elsif restroom.photos.present? %>
+                <% if restroom.photos.present? %>
                   <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
 
                 <% else %>
@@ -35,15 +33,13 @@
                   <p class="card-text">No reviews available.</p>
                 <% end %>
                 <p class="card-text">
-                  <% if restroom.pricing %>
-                    <i class="fas fa-euro"></i> <%= restroom.pricing %>
-                  <% else %>
-                    <div class="d-flex align-items-center">
-                      <i class="fas fa-euro"></i>
-                      <p class="ml-2 mb-0">Free</p>
-                    </div>
-                  <% end %>
-                </p>
+                  <i class="fas fa-euro"></i>
+                    <% if restroom.pricing %>
+                      <%= restroom.pricing %>
+                    <% else %>
+                      Free
+                    <% end %>
+                  </p>
                 <div>
                       <% if restroom.accessibility && restroom.baby_friendly %>
                         <div class="d-flex justify-content-between">
