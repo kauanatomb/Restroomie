@@ -13,10 +13,11 @@
         <div class="d-flex justify-content-between align-items-center">
           <h5 class="card-title"><%= restroom.name %></h5>
         </div>
-          <% if review.rating.present? %>
-              <i class="fa-solid fa-star"></i>
-          <% else %>
-            <p class="card-text">No rating available.</p>
+          <% if restroom.reviews.present? %>
+              <% average_rating = restroom.reviews.pluck(:rating).sum / restroom.reviews.count.to_f %>
+              <% average_rating.round.times do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
           <% end %>
         <p class="card-text"><%= review.comment %></p>
       </div>
