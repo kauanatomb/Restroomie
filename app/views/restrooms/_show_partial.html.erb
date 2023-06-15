@@ -162,7 +162,7 @@
                   </div>
                   <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
                 </div>
-                <p class="card-text mb-0"><%= review.comment %></p>
+                <p class="card-text mb-0"><%= review.comment.truncate_words(15) %></p>
               </div>
               
             <% end %>

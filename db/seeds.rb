@@ -15,6 +15,24 @@ User.create!(
   username: "Oli"
 )
 
+User.create!(
+  email: "user3@example.com",
+  password: "123456",
+  username: "André"
+)
+
+User.create!(
+  email: "user4@example.com",
+  password: "123456",
+  username: "Maria"
+)
+
+User.create!(
+  email: "user5@example.com",
+  password: "123456",
+  username: "Carol"
+)
+
 restroom1 = Restroom.create!(
   name: "Haupti",
   address: "Europaplatz 1, 10557 Berlin",
@@ -138,7 +156,7 @@ restroom7.photos.attach(io: file7, filename: "#{restroom7.name.parameterize}.png
 restroom7.save!
 
 Restroom.all.each do |restroom|
-  rand(3..4).times do
+  rand(2..3).times do
     comment = Faker::Quote.yoda
     Review.create!(
       rating: rand(1..5),
