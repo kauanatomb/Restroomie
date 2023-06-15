@@ -14,12 +14,12 @@
           <h5 class="card-title"><%= restroom.name %></h5>
         </div>
           <% if restroom.reviews.present? %>
-              <% average_rating = restroom.reviews.pluck(:rating).sum / restroom.reviews.count.to_f %>
+              <% average_rating = review.rating.to_f %>
               <% average_rating.round.times do %>
                 <i class="fa-solid fa-star"></i>
               <% end %>
           <% end %>
-        <p class="card-text"><%= review.comment %></p>
+        <p class="card-text mb-0"><%= review.comment.truncate_words(9) %></p>
       </div>
     </div>
   </div>
