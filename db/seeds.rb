@@ -20,7 +20,7 @@ restroom1 = Restroom.create!(
   address: "Europaplatz 1, 10557 Berlin",
   accessibility: true,
   baby_friendly: true,
-  pricing: 0.50,
+  pricing: 1,
   longitude: 13.3695,
   latitude: 52.5250,
   user_id: User.second.id,
@@ -39,7 +39,7 @@ restroom2 = Restroom.create!(
   address: "Friedrichstraße 123, 10117 Berlin",
   accessibility: true,
   baby_friendly: true,
-  pricing: 0.50,
+  pricing: 1,
   longitude: 13.3889,
   latitude: 52.5200,
   user_id: User.second.id,
@@ -91,7 +91,7 @@ restroom5 = Restroom.create!(
   address: "Panoramastraße 1A, 10178 Berlin",
   accessibility: false,
   baby_friendly: true,
-  pricing: 0.50,
+  pricing: 1,
   longitude: 13.3695,
   latitude: 52.5250,
   user_id: User.second.id,
@@ -139,7 +139,7 @@ restroom7.save!
 
 Restroom.all.each do |restroom|
   rand(3..4).times do
-    comment = Faker::Lorem.paragraph[0..19]
+    comment = Faker::Quote.yoda
     Review.create!(
       rating: rand(1..5),
       comment: comment,
