@@ -3,7 +3,7 @@
   // border: 0.5px solid rgba(156, 148, 148, 0.85);
   border-radius: 12px;
   margin: 10px;
-  padding: 20px;
+  padding: 10px 20px 10px 20px;
 }
 
 .card-review {
@@ -11,7 +11,7 @@
 }
 
 .image-card > img {
-  height: 250px;
+  height: 200px;
   width: 100%;
   // margin: 0 auto;
 }
@@ -61,4 +61,8 @@ hr {
 
 .review-item {
   margin-bottom: 15px;
+}
+.style1{
+	border-top: 2px solid black !important;
+  width: 100%;
 }

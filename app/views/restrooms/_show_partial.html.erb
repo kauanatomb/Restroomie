@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-12 mt-3">
         <div class="mb-4 restroom-card mapboxgl-map" style="max-height: 150px;">
-          <p data-action="click->slide#slideUp">click me</p>
+          <p class="m-0 text-center background"data-action="click->slide#slideUp"><%= image_tag 'up-arrow.png', alt: 'Up arrow Icon', height:25, width:25 %></p><hr class="style1">
           <div class="d-flex" style="height: 150px;">
-            <div class="col-md-4">
+            <div class="col-md-4 rounded">
               <% if restroom.photo.attached? %>
                 <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
               <% elsif restroom.photos.present? %>
@@ -15,7 +15,7 @@
               <% end %>
             </div>
 
-            <div class="card-body m-0">
+            <div class="card-body m-0 pt-10">
               <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title"><%=  restroom.name  %></h5>
               </div>
@@ -29,13 +29,11 @@
               <% end %>
 
               <p class="card-text">
+              <i class="fas fa-euro"></i>
                 <% if restroom.pricing %>
-                  <i class="fas fa-euro"></i> <%= restroom.pricing %>
+                  <%= restroom.pricing %>
                 <% else %>
-                  <div class="d-flex align-items-center">
-                    <i class="fas fa-euro"></i> <br>
-                    <p class="ml-2 mb-0">Free</p>
-                  </div>
+                  Free
                 <% end %>
               </p>
 
@@ -70,7 +68,7 @@
   </div>
 
   <div class="container justify-content-center d-none" data-slide-target="slidingDiv" style="overflow: scroll; max-height: 87vh;">
-    <div style="position: absolute; top: 5px; right: 5px; z-index: 100" data-action="click->slide#slideOutDown">This is a button</div>
+    <div style="position: absolute; right: 20px; z-index: 100" data-action="click->slide#slideOutDown"><h1><i class="fa-sharp fa-solid fa-circle-xmark"></i></h1></div>
     <div class="restroom-card mapboxgl-map">
       <div class="image-card">
 

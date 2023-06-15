@@ -1,7 +1,9 @@
 <div class="container justify-content-center">
   <div class="restroom-card mapboxgl-map">
     <div class="image-card">
-
+      <%= link_to restrooms_path do %> 
+        <i class="fa-solid fa-arrow-left" style="position: absolute; z-index: 100; top:10px; left:10px;"></i>
+      <% end %>
       <% if @restroom.photo.attached? %>
         <%= cl_image_tag @restroom.photo.key, class: 'card-img-top', height: 150, width: 150, crop: :fill %>
       <% elsif @restroom.photos.present? %>
