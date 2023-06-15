@@ -3,24 +3,23 @@
   <div class="mb-4 restroom-card" style="max-height: 150px;">
     <div class="d-flex" style="max-height: 150px;">
       <div class="col-md-4">
-        <% if restroom.photo.attached? %>
-        <%= cl_image_tag restroom.photo.key, class: 'card-img-top', height: 160, width: 160, crop: :fill %>
-      <% elsif restroom.photos.present? %>
-        <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 160, width: 160, crop: :fill %>
-      <% else %>
-        <p>No Image Available</p>
-      <% end %>
+        <% if restroom.photos.present? %>
+          <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
+        <% else %>
+          <p>No Image Available</p>
+        <% end %>
       </div>
       <div class="card-body m-0">
         <div class="d-flex justify-content-between align-items-center">
           <h5 class="card-title"><%= restroom.name %></h5>
         </div>
-        <% if review.rating.present? %>
-            <i class="fa-solid fa-star"></i>
-        <% else %>
-          <p class="card-text">No rating available.</p>
-        <% end %>
+          <% if review.rating.present? %>
+              <i class="fa-solid fa-star"></i>
+          <% else %>
+            <p class="card-text">No rating available.</p>
+          <% end %>
         <p class="card-text"><%= review.comment %></p>
+      </div>
     </div>
   </div>
 <% end %>
