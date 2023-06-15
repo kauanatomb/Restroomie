@@ -6,11 +6,13 @@
           <p class="m-0 text-center background"data-action="click->slide#slideUp"><%= image_tag 'up-arrow.png', alt: 'Up arrow Icon', height:25, width:25 %></p><hr class="style1">
           <div class="d-flex" style="height: 150px;">
             <div class="col-md-4 rounded">
-              <% if restroom.photos.present? %>
+              <% if restroom.photo.attached? %>
+                <%= cl_image_tag restroom.photo.key, class: "card-img-top", height: 150, width: 150, crop: :fill %>
+            <% elsif restroom.photos.present? %>
                 <%= cl_image_tag restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
-              <% else %>
-                <p>No Image Available</p>
-              <% end %>
+            <% else %>
+              <p>No Image Available</p>
+            <% end %>
             </div>
 
             <div class="card-body m-0 pt-10">
@@ -72,12 +74,12 @@
     <div class="restroom-card mapboxgl-map">
       <div class="image-card">
       
-        <% if @restroom.photos.present? %>
-          <% @restroom.photos.each do |photo| %>
-            <%= cl_image_tag photo.key %>
-          <% end %>
+        <% if @restroom.photo.attached? %>
+          <%= cl_image_tag @restroom.photo.key, class: "card-img-top", height: 150, width: 150, crop: :fill %>
+        <% elsif @restroom.photos.present? %>
+          <%= cl_image_tag @restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
         <% else %>
-          <p>No Image Available</p>
+        <p>No Image Available</p>
         <% end %>
       </div>
       <%# Bookmark bottom %>

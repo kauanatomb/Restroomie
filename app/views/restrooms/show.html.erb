@@ -4,13 +4,14 @@
       <%= link_to restrooms_path do %> 
         <i class="fa-solid fa-arrow-left fa-2x" style="position: absolute; z-index: 100; top:15px; left:15px;"></i>
       <% end %>
-      <% if @restroom.photos.present? %>
-        <% @restroom.photos.each do |photo| %>
-          <%= cl_image_tag photo.key %>
-        <% end %>
+      <% if @restroom.photo.attached? %>
+          <%= cl_image_tag @restroom.photo.key, class: "card-img-top", height: 150, width: 150, crop: :fill %>
+      <% elsif @restroom.photos.present? %>
+          <%= cl_image_tag @restroom.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
       <% else %>
         <p>No Image Available</p>
       <% end %>
+   
     </div>
 
     <%# Bookmark bottom %>

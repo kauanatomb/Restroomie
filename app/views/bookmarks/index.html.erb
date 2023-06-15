@@ -15,11 +15,13 @@
                 <% bookmark = Restroom.find_by(id: bookmark.restroom_id) %>
                 <div class="d-flex" style="max-height: 150px;">
                   <div class="col-md-4">
-                  <% if bookmark.photos.present? %>
+                  <% if bookmark.photo.attached? %>
+                    <%= cl_image_tag bookmark.photo.key, class: "card-img-top", height: 150, width: 150, crop: :fill %>
+                <% elsif bookmark.photos.present? %>
                     <%= cl_image_tag bookmark.photos.first.key, class: "img-square-wrapper", height: 150, width: 150, crop: :fill %>
-                  <% else %>
-                    <p>No Image Available</p>
-                  <% end %>
+                <% else %>
+                  <p>No Image Available</p>
+                <% end %>
                   </div>
                   <div class="card-body m-0">
                     <div class="d-flex justify-content-between align-items-center">
