@@ -10,8 +10,14 @@
     width: 43,
     alt: "pointer",
     data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
+<% elsif restroom.accessibility? && restroom.baby_friendly? %>
+  <%= image_tag "pointer both.png",
+    height: 54,
+    width: 43,
+    alt: "pointer",
+    data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
 <% else %>
-  <%= image_tag "pointer blue.png",
+  <%= image_tag "pointer (pastel blue).png",
     height: 54,
     width: 43,
     alt: "pointer",
