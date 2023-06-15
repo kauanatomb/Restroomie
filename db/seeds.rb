@@ -6,13 +6,13 @@ Restroom.destroy_all
 User.create!(
   email: "user1@example.com",
   password: "123456",
-  username: "User 1"
+  username: "Andi"
 )
 
 User.create!(
   email: "user2@example.com",
   password: "123456",
-  username: "User 2"
+  username: "Oli"
 )
 
 restroom1 = Restroom.create!(
