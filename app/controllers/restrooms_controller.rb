@@ -10,7 +10,7 @@ class RestroomsController < ApplicationController
       lat: restroom.latitude,
       lng: restroom.longitude,
       info_window_html: render_to_string(partial: "info_window", locals: {restroom: restroom}),
-      marker_html: render_to_string(partial: "marker", locals: { restroomLngLat: [restroom.longitude, restroom.latitude], restroom_id: restroom.id })
+      marker_html: render_to_string(partial: "marker", locals: { restroomLngLat: [restroom.longitude, restroom.latitude], restroom_id: restroom.id, restroom: restroom })
     }
     end
   end

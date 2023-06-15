@@ -1,5 +1,19 @@
-<%= image_tag "pointer (blue).png",
-              height: 70,
-              width: 50,
-              alt: "pointer",
-              data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
+<% if restroom.baby_friendly? && restroom.accessibility == false %>
+  <%= image_tag "pointer baby.png",
+    height: 54,
+    width: 43,
+    alt: "pointer",
+    data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
+<% elsif restroom.accessibility? && restroom.baby_friendly == false %>
+  <%= image_tag "pointer acc.png",
+    height: 54,
+    width: 43,
+    alt: "pointer",
+    data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
+<% else %>
+  <%= image_tag "pointer blue.png",
+    height: 54,
+    width: 43,
+    alt: "pointer",
+    data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
+<% end %>

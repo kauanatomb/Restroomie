@@ -71,7 +71,7 @@ restroom3.save!
 restroom4 = Restroom.create!(
   name: "Brandi",
   address: "Unter den Linden 77, 10117 Berlin",
-  accessibility: true,
+  accessibility: false,
   baby_friendly: true,
   pricing: nil,
   longitude: 13.3944,
@@ -89,7 +89,7 @@ restroom4.save!
 restroom5 = Restroom.create!(
   name: "Alex",
   address: "Panoramastraße 1A, 10178 Berlin",
-  accessibility: true,
+  accessibility: false,
   baby_friendly: true,
   pricing: 0.50,
   longitude: 13.3695,
