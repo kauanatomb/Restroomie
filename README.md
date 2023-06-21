@@ -1,5 +1,5 @@
 <h1 align="center">Restroomie</h1>
-<p align="center">Restroomie is a mobile project developed as part of my web development bootcamp at Le Wagon, showcasing my acquired skills and knowledge. The goal of Restroomie is to help people find public restrooms in Berlin that are accessible and baby-friendly.
+<p align="start">Restroomie is a mobile project developed as part of my web development bootcamp at Le Wagon, showcasing my acquired skills and knowledge. The goal of Restroomie is to help people find public restrooms in Berlin that are accessible and baby-friendly.
 
 With Restroomie, you can view your current location on a map, discover nearby restrooms, and get directions to them. You have the ability to bookmark your favorite restrooms, provide ratings and reviews, as well as add new restrooms to the map if they're not already listed.</p>
 
@@ -10,7 +10,7 @@ With Restroomie, you can view your current location on a map, discover nearby re
 </p>
 
 <p align="center">
-<img alt="Restroomie" src="restroomie.jpg" width="100%">
+<img alt="Restroomie" src="app/assets/images/restroomie.jpg" width="100%">
 </p>
 
 ## Tecnologies
@@ -24,11 +24,12 @@ This project was built with:
 
 ## Installation Instructions
 Restroomie is a mobile project, so to access real-time location, you need to authorize location access on your smartphone.
+To access the bookmark and reviews features, you will need to create an account and log in.
 
 - <a href= "https://restroomie.herokuapp.com">Acess the finished project online</a>
 
 ## Team Members
-Kauana Tombolato
-Patrick Bird
-Andreas Aichinger
-Yaya
+- Kauana Tombolato
+- Patrick Bird
+- Andreas Aichinger
+- Yaya
