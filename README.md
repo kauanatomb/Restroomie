@@ -19,7 +19,7 @@ This project was built with:
 
 - Ruby on Rails
 - JavaScript (Stimulus)
-- Bootstrap, SCSS (style)
+- Bootstrap, SCSS (styling)
 - Figma (for design)
 
 ## Installation Instructions
