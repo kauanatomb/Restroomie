@@ -1,23 +1,23 @@
 <% if restroom.baby_friendly? && restroom.accessibility == false %>
-  <%= image_tag "pointer baby.png",
+  <%= image_tag "pointer_baby.png",
     height: 54,
     width: 43,
     alt: "pointer",
     data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
 <% elsif restroom.accessibility? && restroom.baby_friendly == false %>
-  <%= image_tag "pointer acc.png",
+  <%= image_tag "pointer_acc.png",
     height: 54,
     width: 43,
     alt: "pointer",
     data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
 <% elsif restroom.accessibility? && restroom.baby_friendly? %>
-  <%= image_tag "pointer both.png",
+  <%= image_tag "pointer_both.png",
     height: 54,
     width: 43,
     alt: "pointer",
     data: { url: restroom_path(id: restroom_id), action: "click->replace#replace" } %>
 <% else %>
-  <%= image_tag "pointer (pastel blue).png",
+  <%= image_tag "pointer_pastel_blue.png",
     height: 54,
     width: 43,
     alt: "pointer",
