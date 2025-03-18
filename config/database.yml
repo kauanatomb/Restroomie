@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: _Restroomie_production
-  username: _Restroomie
-  password: <%= ENV["_RESTROOMIE_DATABASE_PASSWORD"] %>
+  url: <%= ENV["RESTROOMIE_DATABASE_PASSWORD"] %>
